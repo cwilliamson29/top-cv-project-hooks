@@ -1,6 +1,7 @@
 import { Container, Card, CardHeader, Row, CardBody, Col } from 'reactstrap';
 import uniqid from 'uniqid';
 import ContactInfo from './components/infoComponent';
+import Education from './components/educationComponent';
 
 function App() {
     return (
@@ -16,7 +17,9 @@ function App() {
                                 <div>
                                     <ContactInfo />
                                 </div>
-                                <div className="pb-5"> Education Goes here</div>
+                                <div className="pb-5">
+                                    <Education />
+                                </div>
                                 <div>Work goes here</div>
                             </CardBody>
                         </Card>
