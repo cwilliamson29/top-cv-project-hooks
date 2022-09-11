@@ -5,17 +5,22 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import uniqid from 'uniqid';
 import ContactInfo from './components/infoComponent';
 import Education from './components/educationComponent';
+import Work from './components/workComponent';
 
 function App() {
     const initContact = Object.freeze({ id: uniqid(), fname: '', lname: '', email: '', phone: '' });
     const [contact, setContact] = useState(initContact);
     const [eduArray, setEduArray] = useState([]);
+    const [workArray, setWorkArray] = useState([]);
 
     const saveInfo = (i1, i2, i3, i4) => {
         setContact({ fname: i1, lname: i2, email: i3, phone: i4 });
     };
     const addEducation = () => {
         setEduArray((eduArray) => [...eduArray, { id: uniqid(), school: '', study: '', dateFrom: '', dateTo: '' }]);
+    };
+    const addWork = () => {
+        setWorkArray((workArray) => [...workArray, { id: uniqid(), company: '', title: '', dateFrom: '', dateTo: '', desc: '' }]);
     };
 
     const saveEducation = (id, i1, i2, i3, i4) => {
@@ -27,9 +32,21 @@ function App() {
         });
         setEduArray(update);
     };
+    const saveWork = (id, i1, i2, i3, i4, i5) => {
+        let update = workArray.map((element, i) => {
+            if (element.id === id) {
+                return { ...element, company: i1, title: i2, dateFrom: i3, dateTo: i4, desc: i5 };
+            }
+            return element;
+        });
+        setWorkArray(update);
+    };
 
     const handleEduDelete = (id) => {
         setEduArray(eduArray.filter((item) => item.id !== id));
+    };
+    const handleWorkDelete = (id) => {
+        setWorkArray(workArray.filter((item) => item.id !== id));
     };
 
     return (
@@ -46,6 +63,7 @@ function App() {
                                     <ContactInfo contact={contact} saveInfo={saveInfo} />
                                 </div>
                                 <div className="pb-5">
+                                    <div className="text-center h1">Add Education</div>
                                     {eduArray.map((item, i) => (
                                         <Education key={item.id} education={item} saveEducation={saveEducation} handleDelete={handleEduDelete} />
                                     ))}
@@ -59,7 +77,22 @@ function App() {
                                         </Button>
                                     </div>
                                 </div>
-                                <div>Work goes here</div>
+                                <div className="pb-5">
+                                    <div className="text-center h1">Add Work History</div>
+                                    {workArray.map((item, i) => (
+                                        <Work key={item.id} work={item} saveWork={saveWork} handleDelete={handleWorkDelete} />
+                                    ))}
+
+                                    <div className="text-center pt-3">
+                                        <Button
+                                            className="bg-primary rounded-pill"
+                                            onClick={() => {
+                                                addWork();
+                                            }}>
+                                            <FontAwesomeIcon icon={faPlus} />
+                                        </Button>
+                                    </div>
+                                </div>
                             </CardBody>
                         </Card>
                     </Col>
@@ -67,6 +100,7 @@ function App() {
                 </Row>
                 <Button onClick={() => console.log(contact)}>console contact</Button>
                 <Button onClick={() => console.log(eduArray)}>console education</Button>
+                <Button onClick={() => console.log(workArray)}>console work</Button>
             </Container>
         </div>
     );
