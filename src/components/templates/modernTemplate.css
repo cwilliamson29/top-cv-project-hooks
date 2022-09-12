@@ -1,0 +1,43 @@
+@media print {
+	body {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+}
+.printWidth {
+	width: 834px !important;
+	background-color: white;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px !important;
+}
+.resumeMargin {
+	height: 5px;
+	width: 100%;
+}
+.abr {
+	width: 250px;
+	border: 3px solid #1a53ff;
+	font-size: 115px;
+	font-weight: bold;
+	margin: auto;
+	float: left;
+	text-align: center;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.nameDisplay {
+	width: 550px;
+	height: 100px;
+	float: left;
+	background-color: #1a53ff;
+	border-bottom: 10px solid black;
+	color: white;
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	line-height: 100px;
+	margin-top: auto;
+	margin-bottom: auto;
+}

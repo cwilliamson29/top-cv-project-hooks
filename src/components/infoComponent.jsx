@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
-import { Row, Label, Input, Button } from 'reactstrap';
+import { Row, Label, Input, Button, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFloppyDisk, faFilePen } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faTrash, faFilePen } from '@fortawesome/free-solid-svg-icons';
 
 function ContactInfo(props) {
-	const [fname, setFname] = useState('');
-	const [lname, setLname] = useState('');
-	const [email, setEmail] = useState('');
-	const [phone, setPhone] = useState('');
+	const [fname, setFname] = useState(props.contact.fname);
+	const [lname, setLname] = useState(props.contact.lname);
+	const [email, setEmail] = useState(props.contact.email);
+	const [phone, setPhone] = useState(props.contact.phone);
 	const [editing, setEditing] = useState(true);
 
 	const save = (i1, i2, i3, i4) => {
 		props.saveInfo(i1, i2, i3, i4);
 		setEditing(false);
 	};
+	const deleteInfo = () => {
+		setFname('');
+		setLname('');
+		setEmail('');
+		setPhone('');
+		props.handleDelete();
+	};
 
 	if (editing) {
 		return (
 			<div className="pb-5">
+				<Row>
+					<Col md={1}>
+						<span
+							onClick={() => {
+								save(fname, lname, email, phone);
+							}}>
+							<FontAwesomeIcon icon={faFloppyDisk} size="xl" color="orange" />
+						</span>
+					</Col>
+					<Col md={10} className="text-center">
+						Work History
+					</Col>
+					<Col md={1} className="text-end">
+						<span onClick={() => deleteInfo()}>
+							<FontAwesomeIcon icon={faTrash} size="xl" color="red" />
+						</span>
+					</Col>
+				</Row>
 				<Row>
 					<div className="col-md-2 text-end pb-3">
 						<Label for="fName">First Name:</Label>
@@ -47,16 +72,29 @@ function ContactInfo(props) {
 						<Input type="phone" onChange={(e) => setPhone(e.target.value)} value={phone} name="phone" placeholder="phone" />
 					</div>
 				</Row>
-				<div className="text-center pt-3">
-					<Button className="bg-primary w-25" onClick={() => save(fname, lname, email, phone)}>
-						<FontAwesomeIcon icon={faFloppyDisk} size="xl" /> Save
-					</Button>
-				</div>
 			</div>
 		);
 	} else if (!editing) {
 		return (
 			<div className="pb-5">
+				<Row>
+					<Col md={1}>
+						<span
+							onClick={() => {
+								setEditing(true);
+							}}>
+							<FontAwesomeIcon icon={faFilePen} size="xl" color="darkgreen" />
+						</span>
+					</Col>
+					<Col md={10} className="text-center">
+						Work History
+					</Col>
+					<Col md={1} className="text-end">
+						<span onClick={() => deleteInfo()}>
+							<FontAwesomeIcon icon={faTrash} size="xl" color="red" />
+						</span>
+					</Col>
+				</Row>
 				<Row>
 					<div className="col-md-2 text-end pb-3">
 						<Label for="firstName">First Name:</Label>
@@ -86,11 +124,6 @@ function ContactInfo(props) {
 						<Label for="phone">{phone}</Label>
 					</div>
 				</Row>
-				<div className="text-center pt-4">
-					<Button className="bg-primary w-25" onClick={() => setEditing(true)}>
-						<FontAwesomeIcon icon={faFilePen} size="xl" /> Edit
-					</Button>
-				</div>
 			</div>
 		);
 	}

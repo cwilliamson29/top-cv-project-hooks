@@ -5,11 +5,11 @@ import { faFloppyDisk, faTrash, faFilePen } from '@fortawesome/free-solid-svg-ic
 
 function WorkHistory(props) {
       const [editing, setEditing] = useState(true);
-      const [company, setCompany] = useState('');
-      const [title, setTitle] = useState('');
-      const [dateFrom, setDateFrom] = useState('');
-      const [dateTo, setDateTo] = useState('');
-      const [desc, setDesc] = useState('');
+      const [company, setCompany] = useState(props.work.company);
+      const [title, setTitle] = useState(props.work.title);
+      const [dateFrom, setDateFrom] = useState(props.work.dateFrom);
+      const [dateTo, setDateTo] = useState(props.work.dateTo);
+      const [desc, setDesc] = useState(props.work.desc);
 
       const save = (id, i1, i2, i3, i4, i5) => {
             props.saveWork(id, i1, i2, i3, i4, i5);
@@ -26,7 +26,7 @@ function WorkHistory(props) {
                                                 onClick={() => {
                                                       save(props.work.id, company, title, dateFrom, dateTo, desc);
                                                 }}>
-                                                <FontAwesomeIcon icon={faFloppyDisk} size="xl" />
+                                                <FontAwesomeIcon icon={faFloppyDisk} size="xl" color="orange" />
                                           </span>
                                     </Col>
                                     <Col md={10} className="text-center">
@@ -34,7 +34,7 @@ function WorkHistory(props) {
                                     </Col>
                                     <Col md={1} className="text-end">
                                           <span onClick={() => props.handleDelete(props.work.id)}>
-                                                <FontAwesomeIcon icon={faTrash} size="xl" />
+                                                <FontAwesomeIcon icon={faTrash} size="xl" color="red" />
                                           </span>
                                     </Col>
                               </Row>
@@ -49,7 +49,7 @@ function WorkHistory(props) {
                                     </div>
 
                                     <div className="col-md-2 text-end pb-3">
-                                          <Label for="study">Title:</Label>
+                                          <Label for="study">Job Title:</Label>
                                     </div>
                                     <div className="col-md-4 pb-3">
                                           <Input type="text" onChange={(e) => setTitle(e.target.value)} value={title} id="title" placeholder="Your Title" />
@@ -59,14 +59,14 @@ function WorkHistory(props) {
                                           <Label for="dateFrom">Date From:</Label>
                                     </div>
                                     <div className="col-md-4 pb-3">
-                                          <Input type="date" onChange={(e) => setDateFrom(e.target.value)} value={dateFrom} id="dateFrom" />
+                                          <Input type="text" onChange={(e) => setDateFrom(e.target.value)} value={dateFrom} id="dateFrom" placeholder="September 2017" />
                                     </div>
 
                                     <div className="col-md-2 text-end pb-3">
                                           <Label for="dateTo">Date To:</Label>
                                     </div>
                                     <div className="col-md-4 pb-3">
-                                          <Input type="date" onChange={(e) => setDateTo(e.target.value)} value={dateTo} id="dateTo" />
+                                          <Input type="text" onChange={(e) => setDateTo(e.target.value)} value={dateTo} id="dateTo" placeholder="Present" />
                                     </div>
 
                                     <div className="col-md-2 text-end pb-3">
@@ -89,7 +89,7 @@ function WorkHistory(props) {
                                                 onClick={() => {
                                                       setEditing(true);
                                                 }}>
-                                                <FontAwesomeIcon icon={faFilePen} size="xl" />
+                                                <FontAwesomeIcon icon={faFilePen} size="xl" color="darkgreen" />
                                           </span>
                                     </Col>
                                     <Col md={10} className="text-center">
@@ -97,47 +97,18 @@ function WorkHistory(props) {
                                     </Col>
                                     <Col md={1} className="text-end">
                                           <span onClick={() => props.handleDelete(props.work.id)}>
-                                                <FontAwesomeIcon icon={faTrash} size="xl" />
+                                                <FontAwesomeIcon icon={faTrash} size="xl" color="red" />
                                           </span>
                                     </Col>
                               </Row>
                         </CardHeader>
                         <CardBody>
-                              <Row>
-                                    <div className="col-md-2 text-end pb-3">
-                                          <Label for="company">Company:</Label>
-                                    </div>
-                                    <div className="col-md-4 pb-3 text-end fw-bold">
-                                          <Label for="company">{company}</Label>
-                                    </div>
-
-                                    <div className="col-md-2 text-end pb-3">
-                                          <Label for="title">Title:</Label>
-                                    </div>
-                                    <div className="col-md-4 pb-3 text-end fw-bold">
-                                          <Label for="title">{title}</Label>
-                                    </div>
-
-                                    <div className="col-md-2 text-end pb-3">
-                                          <Label for="dateFrom">Date From:</Label>
-                                    </div>
-                                    <div className="col-md-4 pb-3 text-end fw-bold">
-                                          <Label for="dateFrom">{dateFrom}</Label>
-                                    </div>
-
-                                    <div className="col-md-2 text-end pb-3">
-                                          <Label for="dateTo">Date To:</Label>
-                                    </div>
-                                    <div className="col-md-4 pb-3 text-end fw-bold">
-                                          <Label for="dateTo">{dateTo}</Label>
-                                    </div>
-
-                                    <div className="col-md-2 text-end pb-3">
-                                          <Label for="dateTo">Job Description:</Label>
-                                    </div>
-                                    <div className="col-md-10 pb-3">
-                                          <Label for="dateTo">{desc}</Label>
-                                    </div>
+                              <Row className="ml-2">
+                                    <h2>{company}</h2>
+                                    <h5 className="ml-c25 fi">
+                                          {title} | {dateFrom} to {dateTo}
+                                    </h5>
+                                    <p>{desc}</p>
                               </Row>
                         </CardBody>
                   </Card>

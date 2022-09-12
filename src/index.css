@@ -1,6 +1,13 @@
 html,
 body {
     height: 100vh;
+    background-img: './img/';
+}
+#root {
+    /*background-color: #ff9933;*/
+    background-image: url('./img/denim.webp');
+    background-position: center;
+    background-repeat: repeat;
 }
 
 @font-face {
@@ -22,5 +29,13 @@ body {
 }
 
 .fc {
-    font-family: 'customfont';
+    font-family: 'Russo One';
+}
+
+.ml-c25 {
+    margin-left: 25px;
+}
+
+.fi {
+    font-style: italic;
 }
