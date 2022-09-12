@@ -55,10 +55,10 @@ function Education(props) {
 							<Input type="text" onChange={(e) => setStudy(e.target.value)} value={study} id="study" placeholder="Bachelors of Science" />
 						</div>
 						<div className="col-md-1 text-end pb-3">
-							<Label for="study">Major:</Label>
+							<Label for="major">Major:</Label>
 						</div>
 						<div className="col-md-3 pb-3">
-							<Input type="text" onChange={(e) => setMajor(e.target.value)} value={major} id="study" placeholder="Computer Science" />
+							<Input type="text" onChange={(e) => setMajor(e.target.value)} value={major} id="major" placeholder="Computer Science" />
 						</div>
 
 						<div className="col-md-2 text-end pb-3">

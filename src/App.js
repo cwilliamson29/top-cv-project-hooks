@@ -26,7 +26,7 @@ function App() {
         setContact({ fname: i1, lname: i2, email: i3, phone: i4 });
     };
     const addEducation = () => {
-        setEduArray((eduArray) => [...eduArray, { id: uniqid(), school: '', study: '', dateFrom: '', dateTo: '' }]);
+        setEduArray((eduArray) => [...eduArray, { id: uniqid(), school: '', study: '', major: '', dateFrom: '', dateTo: '' }]);
     };
     const addWork = () => {
         setWorkArray((workArray) => [...workArray, { id: uniqid(), company: '', title: '', dateFrom: '', dateTo: '', desc: '' }]);
