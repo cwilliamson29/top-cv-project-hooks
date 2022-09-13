@@ -4,6 +4,9 @@
 		print-color-adjust: exact;
 	}
 }
+:root {
+	--bg-c: #1a53ff;
+}
 .printWidth {
 	width: 834px !important;
 	background-color: white;
@@ -18,6 +21,7 @@
 }
 .leftColumn {
 	width: 250px;
+	float: left;
 }
 .rightColumn {
 	width: 550px;
@@ -25,7 +29,8 @@
 }
 .abr {
 	width: 100%;
-	border: 3px solid #1a53ff;
+	border-width: 3px;
+	border-style: solid;
 	font-weight: bold;
 	margin: auto;
 	float: left;
@@ -37,7 +42,6 @@
 	width: 100%;
 	height: 100px;
 	float: left;
-	background-color: #1a53ff;
 	border-bottom: 10px solid black;
 	color: white;
 	font-weight: bold;
@@ -60,4 +64,83 @@
 	float: left;
 	padding-top: 10px;
 	margin-left: 25px;
+}
+.col-mar {
+	margin-top: 25px;
+}
+.loc {
+	border-top: 2px solid var(--bg-c);
+	border-left: 2px solid var(--bg-c);
+	border-bottom: 2px solid var(--bg-c);
+	width: 100%;
+	height: 40px;
+	float: left;
+	line-height: 50px;
+}
+.loc1 {
+	float: left;
+	background-color: var(--bg-c);
+	height: 36px;
+	width: 35px;
+	line-height: 30px;
+	text-align: center;
+}
+.loc2 {
+	float: left;
+	margin-left: 15px;
+	height: 36px;
+	line-height: 36px;
+}
+.ph {
+	border-left: 2px solid var(--bg-c);
+	border-bottom: 2px solid var(--bg-c);
+	width: 100%;
+	height: 40px;
+	float: left;
+	line-height: 50px;
+}
+.ph1 {
+	float: left;
+	background-color: var(--bg-c);
+	height: 38px;
+	width: 35px;
+	line-height: 30px;
+	text-align: center;
+}
+.ph2 {
+	float: left;
+	margin-left: 15px;
+	height: 36px;
+	line-height: 36px;
+}
+.mg-b {
+	margin-bottom: 200px;
+}
+.education {
+	border-bottom: 3px solid;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	width: 95%;
+	height: 45px;
+	float: left;
+	font-weight: bold;
+	line-height: 45px;
+	font-size: 25px;
+}
+.educ {
+	padding-left: 10px;
+}
+.study {
+	font-weight: bold;
+}
+.major {
+	padding-left: 15px;
+	font-style: italic;
+}
+.school {
+	padding-left: 1px;
+}
+.scYear {
+	padding-left: 10px;
+	font-style: italic;
 }

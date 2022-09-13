@@ -13,7 +13,7 @@ import classnames from 'classnames';
 import ResumeBuilder from './components/printComponent';
 
 function App() {
-    const [contact, setContact] = useState({ fname: '', lname: '', email: '', phone: '' });
+    const [contact, setContact] = useState({ fname: '', lname: '', email: '', phone: '', loc: '' });
     const [summary, setSummary] = useState('');
     const [eduArray, setEduArray] = useState([]);
     const [certArray, setCertArray] = useState([]);
@@ -47,18 +47,9 @@ function App() {
     const addSkills = () => {
         setSkillsArray([...skillsArray, { id: uniqid(), skill: '', exp: '', editing: true }]);
     };
-    const saveSkills = (id, i1, i2, i3) => {
-        let update = skillsArray.map((element, i) => {
-            if (element.id === id) {
-                return { ...element, skill: i1, exp: i2, editing: i3 };
-            }
-            return element;
-        });
-        setSkillsArray(update);
-    };
 
     const handleInfoDelete = () => {
-        setContact({ fname: '', lname: '', email: '', phone: '' });
+        setContact({ fname: '', lname: '', email: '', phone: '', loc: '' });
     };
     const handleSummaryDelete = () => {
         setSummary('');
@@ -245,7 +236,7 @@ function App() {
                                                         </CardHeader>
                                                         <CardBody className="justify-content-center">
                                                             {skillsArray.map((item, i) => (
-                                                                <Skills key={item.id} skills={item} saveSkills={saveSkills} handleDelete={handleSkillsDelete} />
+                                                                <Skills key={item.id} skills={item} skillsArray={skillsArray} setSkillsArray={setSkillsArray} handleDelete={handleSkillsDelete} />
                                                             ))}
                                                         </CardBody>
                                                     </Card>
@@ -298,7 +289,7 @@ function App() {
         return (
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
-                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} />
+                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} />
                     <Button onClick={() => console.log(summary)}>console summary</Button>
                     <Button onClick={() => console.log(contact)}>console contact</Button>
                     <Button onClick={() => console.log(eduArray)}>console education</Button>
