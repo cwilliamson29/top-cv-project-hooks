@@ -1,76 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Card, CardHeader, Row, CardBody, Col, Button, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import uniqid from 'uniqid';
 import ContactInfo from './components/infoComponent';
+import Summary from './components/summaryComponent';
 import Education from './components/educationComponent';
+import Certification from './components/certificationComponent';
 import Work from './components/workComponent';
 import Skills from './components/skillsComponent';
+import PreviewValidate from './components/ValidatorComponent';
 import classnames from 'classnames';
 import ResumeBuilder from './components/printComponent';
 
 function App() {
-    const initContact = Object.freeze({ id: uniqid(), fname: '', lname: '', email: '', phone: '' });
-    const [contact, setContact] = useState(initContact);
+    const [contact, setContact] = useState({ fname: '', lname: '', email: '', phone: '' });
+    const [summary, setSummary] = useState('');
     const [eduArray, setEduArray] = useState([]);
+    const [certArray, setCertArray] = useState([]);
     const [workArray, setWorkArray] = useState([]);
     const [skillsArray, setSkillsArray] = useState([]);
+    const [descArray, setDescArray] = useState([]);
     const [activeTab, setActiveTab] = useState('1');
     const [preview, setPreview] = useState(false);
+
+    useEffect(() => {
+        document.title = 'Rob The Resume Builder';
+    });
 
     const toggle = (tab) => {
         if (activeTab !== tab) setActiveTab(tab);
     };
-
-    const saveInfo = (i1, i2, i3, i4) => {
-        setContact({ fname: i1, lname: i2, email: i3, phone: i4 });
-    };
     const addEducation = () => {
-        setEduArray((eduArray) => [...eduArray, { id: uniqid(), school: '', study: '', major: '', dateFrom: '', dateTo: '' }]);
+        setEduArray([...eduArray, { id: uniqid(), school: '', study: '', major: '', dateFrom: '', dateTo: '', editing: true }]);
+    };
+    const addCert = () => {
+        setCertArray([...eduArray, { id: uniqid(), cert: '', source: '', date: '', editing: true }]);
     };
     const addWork = () => {
-        setWorkArray((workArray) => [...workArray, { id: uniqid(), company: '', title: '', dateFrom: '', dateTo: '', desc: '' }]);
-    };
-    const addSkills = () => {
-        setSkillsArray((skillsArray) => [...skillsArray, { id: uniqid(), skill: '', exp: '' }]);
+        setWorkArray([...workArray, { id: uniqid(), company: '', title: '', dateFrom: '', dateTo: '' }]);
     };
 
-    const saveEducation = (id, i1, i2, i3, i4, i5) => {
-        let update = eduArray.map((element, i) => {
-            if (element.id === id) {
-                return { ...element, school: i1, study: i2, major: i3, dateFrom: i4, dateTo: i5 };
-            }
-            return element;
-        });
-        setEduArray(update);
+    const addWorkDesc = (itemId) => {
+        setDescArray([...descArray, { id: uniqid(), parentId: itemId, text: '' }]);
     };
-    const saveWork = (id, i1, i2, i3, i4, i5) => {
-        let update = workArray.map((element, i) => {
-            if (element.id === id) {
-                return { ...element, company: i1, title: i2, dateFrom: i3, dateTo: i4, desc: i5 };
-            }
-            return element;
-        });
-        setWorkArray(update);
+
+    const addSkills = () => {
+        setSkillsArray([...skillsArray, { id: uniqid(), skill: '', exp: '', editing: true }]);
     };
-    const saveSkills = (id, i1, i2) => {
+    const saveSkills = (id, i1, i2, i3) => {
         let update = skillsArray.map((element, i) => {
             if (element.id === id) {
-                return { ...element, skill: i1, exp: i2 };
+                return { ...element, skill: i1, exp: i2, editing: i3 };
             }
             return element;
         });
         setSkillsArray(update);
     };
 
-    const handleInfoDelete = (id) => {
+    const handleInfoDelete = () => {
         setContact({ fname: '', lname: '', email: '', phone: '' });
+    };
+    const handleSummaryDelete = () => {
+        setSummary('');
     };
     const handleEduDelete = (id) => {
         setEduArray(eduArray.filter((item) => item.id !== id));
     };
+    const handleCertDelete = (id) => {
+        setCertArray(certArray.filter((item) => item.id !== id));
+    };
     const handleWorkDelete = (id) => {
         setWorkArray(workArray.filter((item) => item.id !== id));
+    };
+    const handleDescDelete = (id) => {
+        setDescArray(descArray.filter((item) => item.id !== id));
     };
     const handleSkillsDelete = (id) => {
         setSkillsArray(skillsArray.filter((item) => item.id !== id));
@@ -100,7 +103,7 @@ function App() {
                                 </CardHeader>
                                 <CardBody className="mx-2">
                                     <div>
-                                        <ContactInfo contact={contact} saveInfo={saveInfo} handleDelete={handleInfoDelete} />
+                                        <ContactInfo contact={contact} setContact={setContact} handleDelete={handleInfoDelete} />
                                     </div>
                                     <div className=" pb-5">
                                         <Nav tabs>
@@ -110,7 +113,7 @@ function App() {
                                                     onClick={() => {
                                                         toggle('1');
                                                     }}>
-                                                    Education
+                                                    Summary
                                                 </NavLink>
                                             </NavItem>
                                             <NavItem className="fc">
@@ -119,7 +122,7 @@ function App() {
                                                     onClick={() => {
                                                         toggle('2');
                                                     }}>
-                                                    Work History
+                                                    Education
                                                 </NavLink>
                                             </NavItem>
                                             <NavItem className="fc">
@@ -128,13 +131,47 @@ function App() {
                                                     onClick={() => {
                                                         toggle('3');
                                                     }}>
+                                                    Certifications
+                                                </NavLink>
+                                            </NavItem>
+                                            <NavItem className="fc">
+                                                <NavLink
+                                                    className={classnames({ active: activeTab === '4' })}
+                                                    onClick={() => {
+                                                        toggle('4');
+                                                    }}>
                                                     Skills
+                                                </NavLink>
+                                            </NavItem>
+                                            <NavItem className="fc">
+                                                <NavLink
+                                                    className={classnames({ active: activeTab === '5' })}
+                                                    onClick={() => {
+                                                        toggle('5');
+                                                    }}>
+                                                    Work History
                                                 </NavLink>
                                             </NavItem>
                                         </Nav>
 
                                         <TabContent activeTab={activeTab}>
                                             <TabPane tabId="1">
+                                                <div className="pb-5">
+                                                    <Card className="pt-3">
+                                                        <CardHeader className="mb-3">
+                                                            <Row className=" pr-3 pl-3">
+                                                                <Col md={12} className="text-dark fc text-center h1">
+                                                                    Add Summary
+                                                                </Col>
+                                                            </Row>
+                                                        </CardHeader>
+                                                        <CardBody className="justify-content-center">
+                                                            <Summary summary={summary} setSummary={setSummary} onDelete={handleSummaryDelete} />
+                                                        </CardBody>
+                                                    </Card>
+                                                </div>
+                                            </TabPane>
+                                            <TabPane tabId="2">
                                                 <div className="pb-5">
                                                     <Card className="pt-3">
                                                         <CardHeader className="mb-3">
@@ -154,34 +191,7 @@ function App() {
                                                         </CardHeader>
                                                         <CardBody className="justify-content-center">
                                                             {eduArray.map((item, i) => (
-                                                                <Education key={item.id} education={item} saveEducation={saveEducation} handleDelete={handleEduDelete} />
-                                                            ))}
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            </TabPane>
-
-                                            <TabPane tabId="2">
-                                                <div className="pb-5">
-                                                    <Card className="pt-3">
-                                                        <CardHeader className="mb-3">
-                                                            <Row className=" pr-3 pl-3">
-                                                                <Col md={10} className="text-center h1 text-dark fc ">
-                                                                    Add Work History
-                                                                </Col>
-                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
-                                                                    <span
-                                                                        onClick={() => {
-                                                                            addWork();
-                                                                        }}>
-                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
-                                                                    </span>
-                                                                </Col>
-                                                            </Row>
-                                                        </CardHeader>
-                                                        <CardBody className="justify-content-center">
-                                                            {workArray.map((item, i) => (
-                                                                <Work key={item.id} work={item} saveWork={saveWork} handleDelete={handleWorkDelete} />
+                                                                <Education key={item.id} eduArray={eduArray} setEduArray={setEduArray} education={item} handleDelete={handleEduDelete} />
                                                             ))}
                                                         </CardBody>
                                                     </Card>
@@ -189,6 +199,33 @@ function App() {
                                             </TabPane>
 
                                             <TabPane tabId="3">
+                                                <div className="pb-5">
+                                                    <Card className="pt-3">
+                                                        <CardHeader className="mb-3">
+                                                            <Row className=" pr-3 pl-3">
+                                                                <Col md={10} className="text-center h1 text-dark fc ">
+                                                                    Add Certifications
+                                                                </Col>
+                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
+                                                                    <span
+                                                                        onClick={() => {
+                                                                            addCert();
+                                                                        }}>
+                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
+                                                                    </span>
+                                                                </Col>
+                                                            </Row>
+                                                        </CardHeader>
+                                                        <CardBody className="justify-content-center">
+                                                            {certArray.map((item, i) => (
+                                                                <Certification key={item.id} cert={item} certArray={certArray} setCertArray={setCertArray} handleDelete={handleCertDelete} />
+                                                            ))}
+                                                        </CardBody>
+                                                    </Card>
+                                                </div>
+                                            </TabPane>
+
+                                            <TabPane tabId="4">
                                                 <div className="pb-5">
                                                     <Card className="pt-3">
                                                         <CardHeader className="mb-3">
@@ -214,6 +251,33 @@ function App() {
                                                     </Card>
                                                 </div>
                                             </TabPane>
+
+                                            <TabPane tabId="5">
+                                                <div className="pb-5">
+                                                    <Card className="pt-3">
+                                                        <CardHeader className="mb-3">
+                                                            <Row className=" pr-3 pl-3">
+                                                                <Col md={10} className="text-center h1 text-dark fc ">
+                                                                    Add Work History
+                                                                </Col>
+                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
+                                                                    <span
+                                                                        onClick={() => {
+                                                                            addWork();
+                                                                        }}>
+                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
+                                                                    </span>
+                                                                </Col>
+                                                            </Row>
+                                                        </CardHeader>
+                                                        <CardBody className="justify-content-center">
+                                                            {workArray.map((item, i) => (
+                                                                <Work key={item.id} work={item} descArray={descArray} workArray={workArray} setWorkArray={setWorkArray} addWorkDesc={addWorkDesc} setDescArray={setDescArray} handleDescDelete={handleDescDelete} handleDelete={handleWorkDelete} />
+                                                            ))}
+                                                        </CardBody>
+                                                    </Card>
+                                                </div>
+                                            </TabPane>
                                         </TabContent>
                                     </div>
                                 </CardBody>
@@ -221,9 +285,12 @@ function App() {
                         </Col>
                         <Col md={1}></Col>
                     </Row>
+                    <Button onClick={() => console.log(summary)}>console summary</Button>
                     <Button onClick={() => console.log(contact)}>console contact</Button>
                     <Button onClick={() => console.log(eduArray)}>console education</Button>
+                    <Button onClick={() => console.log(certArray)}>console certification</Button>
                     <Button onClick={() => console.log(workArray)}>console work</Button>
+                    <Button onClick={() => console.log(descArray)}>console desc</Button>
                 </Container>
             </div>
         );
@@ -231,7 +298,8 @@ function App() {
         return (
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
-                    <ResumeBuilder contact={contact} setPreview={setPreview} />
+                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} />
+                    <Button onClick={() => console.log(summary)}>console summary</Button>
                     <Button onClick={() => console.log(contact)}>console contact</Button>
                     <Button onClick={() => console.log(eduArray)}>console education</Button>
                     <Button onClick={() => console.log(workArray)}>console work</Button>
