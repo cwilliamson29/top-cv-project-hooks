@@ -69,6 +69,29 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 						))}
 					</div>
 				</div>
+				<div>
+					<div className="education" style={{ borderColor: props.color }}>
+						<span>Certifications</span>
+					</div>
+					<div className="educ">
+						{props.cert.map((item, idx) => (
+							<div key={item.id}>
+								<div className={'cert'} style={{ fontSize: props.cert1 + 'px' }}>
+									{item.cert}
+								</div>
+								<div className="certCont">
+									<span className={'source'} style={{ fontSize: props.cert2 + 'px' }}>
+										{item.source}
+									</span>
+									|
+									<span className={'cdate'} style={{ fontSize: props.cert3 + 'px' }}>
+										{item.date}
+									</span>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 
 			{/*************RIGHT COLUMN************/}

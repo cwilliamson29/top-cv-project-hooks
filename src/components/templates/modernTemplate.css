@@ -144,3 +144,17 @@
 	padding-left: 10px;
 	font-style: italic;
 }
+.cert {
+	font-weight: bold;
+}
+.source {
+	padding-right: 6px;
+	font-style: italic;
+}
+.cdate {
+	padding-left: 6px;
+	font-style: italic;
+}
+.certCont {
+	padding-bottom: 10px !important;
+}

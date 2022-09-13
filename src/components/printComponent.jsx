@@ -9,6 +9,8 @@ const ResumeBuilder = (props) => {
 	const contact = props.contact;
 	const summary = props.summary;
 	const educ = props.eduArray;
+	const cert = props.certArray;
+	const skills = props.skillsArray;
 	const [activeTab, setActiveTab] = useState('1');
 	const [abr, setAbr] = useState('100');
 	const [name, setName] = useState('50');
@@ -20,6 +22,9 @@ const ResumeBuilder = (props) => {
 	const [edu1, setEdu1] = useState('14');
 	const [edu2, setEdu2] = useState('13');
 	const [edu3, setEdu3] = useState('14');
+	const [cert1, setCert1] = useState('16');
+	const [cert2, setCert2] = useState('12');
+	const [cert3, setCert3] = useState('12');
 
 	const colorOptions = [
 		{ value: 'hsl(225, 100%, 55%)', label: 'Blue' },
@@ -205,10 +210,6 @@ const ResumeBuilder = (props) => {
 														<Input type="text" onChange={(e) => setEdu1(e.target.value)} value={edu1} />
 													</div>
 												</div>
-											</div>
-										</div>
-										<div className="row">
-											<div className="col-md-4">
 												<div className="row pb-1">
 													<div className="col-5 text-end">
 														<Label className="text-primary fw-bold">Major:</Label>
@@ -218,8 +219,6 @@ const ResumeBuilder = (props) => {
 													</div>
 												</div>
 											</div>
-										</div>
-										<div className="row">
 											<div className="col-md-4">
 												<div className="row pb-1 bg-clight">
 													<div className="col-5 text-end">
@@ -227,6 +226,56 @@ const ResumeBuilder = (props) => {
 													</div>
 													<div className="col-4">
 														<Input type="text" onChange={(e) => setEdu3(e.target.value)} value={edu3} />
+													</div>
+												</div>
+												<div className="row pb-1">
+													<div className="col-5 text-end">
+														<Label className="text-primary fw-bold">Year:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setEdu2(e.target.value)} value={edu2} />
+													</div>
+												</div>
+											</div>
+
+											<div className="col-md-4"></div>
+										</div>
+									</TabPane>
+									<TabPane tabId="3">
+										<div className="row h5 fw-bold pt-1">
+											<div className="col-md-12" style={{ paddingLeft: '50px' }}>
+												<p>Adjust your font size below</p>
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-5 text-end">
+														<Label className="text-primary fw-bold">Certification:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setCert1(e.target.value)} value={cert1} />
+													</div>
+												</div>
+											</div>
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-5 text-end">
+														<Label className="text-primary fw-bold">Organization:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setCert2(e.target.value)} value={cert2} />
+													</div>
+												</div>
+											</div>
+
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-5 text-end">
+														<Label className="text-primary fw-bold">Date:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setCert3(e.target.value)} value={cert3} />
 													</div>
 												</div>
 											</div>
@@ -241,7 +290,7 @@ const ResumeBuilder = (props) => {
 			</Row>
 
 			<div className="row justify-content-center">
-				<ModernTemplate ref={componentRef} info={contact} summary={summary} educ={educ} abr={abr} name={name} sumSize={sumSize} loc={loc} phone={phone} email={email} color={color} edu1={edu1} edu2={edu2} edu3={edu3} />
+				<ModernTemplate ref={componentRef} info={contact} summary={summary} educ={educ} cert={cert} skills={skills} abr={abr} name={name} sumSize={sumSize} loc={loc} phone={phone} email={email} color={color} edu1={edu1} edu2={edu2} edu3={edu3} cert1={cert1} cert2={cert2} cert3={cert3} />
 			</div>
 		</div>
 	);

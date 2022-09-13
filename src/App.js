@@ -31,10 +31,10 @@ function App() {
         if (activeTab !== tab) setActiveTab(tab);
     };
     const addEducation = () => {
-        setEduArray([...eduArray, { id: uniqid(), school: '', study: '', major: '', dateFrom: '', dateTo: '', editing: true }]);
+        setEduArray([...eduArray, { id: uniqid(), school: '', study: '', major: '', dateFrom: '', dateTo: '' }]);
     };
     const addCert = () => {
-        setCertArray([...eduArray, { id: uniqid(), cert: '', source: '', date: '', editing: true }]);
+        setCertArray([...eduArray, { id: uniqid(), cert: '', source: '', date: '' }]);
     };
     const addWork = () => {
         setWorkArray([...workArray, { id: uniqid(), company: '', title: '', dateFrom: '', dateTo: '' }]);
@@ -45,7 +45,7 @@ function App() {
     };
 
     const addSkills = () => {
-        setSkillsArray([...skillsArray, { id: uniqid(), skill: '', exp: '', editing: true }]);
+        setSkillsArray([...skillsArray, { id: uniqid(), skill: '', exp: '' }]);
     };
 
     const handleInfoDelete = () => {
@@ -289,7 +289,7 @@ function App() {
         return (
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
-                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} />
+                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} />
                     <Button onClick={() => console.log(summary)}>console summary</Button>
                     <Button onClick={() => console.log(contact)}>console contact</Button>
                     <Button onClick={() => console.log(eduArray)}>console education</Button>
