@@ -4,7 +4,7 @@ import { AiFillEye } from 'react-icons/ai';
 import { FaTrashAlt, FaPenAlt } from 'react-icons/fa';
 
 function Certification(props) {
-	const [editing, setEditing] = useState(props.cert.editing);
+	const [editing, setEditing] = useState(true);
 
 	const setWorkArrayId = (itemId, cert, source, date) => {
 		let newCertArray = [];

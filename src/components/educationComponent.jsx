@@ -4,7 +4,7 @@ import { AiFillEye } from 'react-icons/ai';
 import { FaTrashAlt, FaPenAlt } from 'react-icons/fa';
 
 function Education(props) {
-	const [editing, setEditing] = useState(props.education.editing);
+	const [editing, setEditing] = useState(true);
 
 	const setEduArrayId = (itemId, school, study, major, dateFrom, dateTo) => {
 		let newEduArray = [];
