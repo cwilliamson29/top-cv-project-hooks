@@ -99,77 +99,30 @@ function App() {
                                         </Nav>
 
                                         <TabContent activeTab={activeTab}>
-                                            {navData.map((item, i) => {
-                                                if (item.name === 'Summary') {
-                                                    return (
-                                                        <NavPaneRender
-                                                            key={'001'}
-                                                            name={item.name}
-                                                            num={item.num}
-                                                            summary={summary}
-                                                            setSummary={setSummary}
-                                                            handleSummaryDelete={handleSummaryDelete}
-                                                        />
-                                                    );
-                                                } else if (item.name === 'Education') {
-                                                    return (
-                                                        <NavPaneRender
-                                                            key={'002'}
-                                                            name={item.name}
-                                                            num={item.num}
-                                                            add={addEducation}
-                                                            eduArray={eduArray}
-                                                            setEduArray={setEduArray}
-                                                            education={item}
-                                                            handleEduDelete={handleEduDelete}
-                                                        />
-                                                    );
-                                                } else if (item.name === 'Certifications') {
-                                                    return (
-                                                        <NavPaneRender
-                                                            key={'003'}
-                                                            name={item.name}
-                                                            num={item.num}
-                                                            add={addCert}
-                                                            cert={item}
-                                                            certArray={certArray}
-                                                            setCertArray={setCertArray}
-                                                            handleCertDelete={handleCertDelete}
-                                                        />
-                                                    );
-                                                } else if (item.name === 'Skills') {
-                                                    return (
-                                                        <NavPaneRender
-                                                            key={'004'}
-                                                            name={item.name}
-                                                            num={item.num}
-                                                            add={addSkills}
-                                                            skills={item}
-                                                            skillsArray={skillsArray}
-                                                            setSkillsArray={setSkillsArray}
-                                                            handleSkillsDelete={handleSkillsDelete}
-                                                        />
-                                                    );
-                                                } else if (item.name === 'Work History') {
-                                                    return (
-                                                        <NavPaneRender
-                                                            key={'005'}
-                                                            name={item.name}
-                                                            num={item.num}
-                                                            add={addWork}
-                                                            work={item}
-                                                            descArray={descArray}
-                                                            workArray={workArray}
-                                                            setWorkArray={setWorkArray}
-                                                            addWorkDesc={addWorkDesc}
-                                                            setDescArray={setDescArray}
-                                                            handleDescDelete={handleDescDelete}
-                                                            handleWorkDelete={handleWorkDelete}
-                                                        />
-                                                    );
-                                                }
-                                                return <div></div>;
-                                            })}
+                                            <NavPaneRender name={'Summary'} num={'1'} summary={summary} setSummary={setSummary} handleSummaryDelete={handleSummaryDelete} />
+                                            <NavPaneRender name={'Education'} num={'2'} add={addEducation} eduArray={eduArray} setEduArray={setEduArray} handleEduDelete={handleEduDelete} />
+                                            <NavPaneRender name={'Certifications'} num={'3'} add={addCert} certArray={certArray} setCertArray={setCertArray} handleCertDelete={handleCertDelete} />
+                                            <NavPaneRender
+                                                name={'Skills'}
+                                                num={'4'}
+                                                add={addSkills}
+                                                skillsArray={skillsArray}
+                                                setSkillsArray={setSkillsArray}
+                                                handleSkillsDelete={handleSkillsDelete}
+                                            />
+                                            <NavPaneRender
+                                                key={'005'}
+                                                name={'Work History'}
+                                                num={'5'}
+                                                add={addWork}
+                                                descArray={descArray}
+                                                workArray={workArray}
+                                                setWorkArray={setWorkArray}
+                                                addWorkDesc={addWorkDesc}
+                                                setDescArray={setDescArray}
+                                                handleDescDelete={handleDescDelete}
+                                                handleWorkDelete={handleWorkDelete}
+                                            />
                                         </TabContent>
                                     </div>
                                 </CardBody>
