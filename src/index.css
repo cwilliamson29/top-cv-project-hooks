@@ -5,8 +5,8 @@ body {
 }
 #root {
     /*background-color: #ff9933;*/
-    /*background-image: url('./img/denim.jpg');*/
-    background-image: url('https://github.com/cwilliamson29/top-cv-project-hooks/blob/0bdd7365eec258c32eb0ad51e7dd78a9dd2dc41c/src/img/denim.jpg');
+    background-image: url('./img/denim.jpg');
+    /*background-image: url('https://github.com/cwilliamson29/top-cv-project-hooks/blob/0bdd7365eec258c32eb0ad51e7dd78a9dd2dc41c/src/img/denim.jpg');*/
     background-position: center;
     background-repeat: repeat;
 }
