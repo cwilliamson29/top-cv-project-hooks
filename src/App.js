@@ -275,12 +275,6 @@ function App() {
                         </Col>
                         <Col md={1}></Col>
                     </Row>
-                    <Button onClick={() => console.log(summary)}>console summary</Button>
-                    <Button onClick={() => console.log(contact)}>console contact</Button>
-                    <Button onClick={() => console.log(eduArray)}>console education</Button>
-                    <Button onClick={() => console.log(certArray)}>console certification</Button>
-                    <Button onClick={() => console.log(workArray)}>console work</Button>
-                    <Button onClick={() => console.log(descArray)}>console desc</Button>
                 </Container>
             </div>
         );
@@ -289,10 +283,6 @@ function App() {
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
                     <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} workArray={workArray} descArray={descArray} />
-                    <Button onClick={() => console.log(summary)}>console summary</Button>
-                    <Button onClick={() => console.log(contact)}>console contact</Button>
-                    <Button onClick={() => console.log(eduArray)}>console education</Button>
-                    <Button onClick={() => console.log(workArray)}>console work</Button>
                 </Container>
             </div>
         );
