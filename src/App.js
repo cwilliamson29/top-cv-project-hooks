@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Card, CardHeader, Row, CardBody, Col, Button, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { Container, Card, CardHeader, Row, CardBody, Col, Button, Nav, TabContent } from 'reactstrap';
 import uniqid from 'uniqid';
 import ContactInfo from './components/infoComponent';
-import Summary from './components/summaryComponent';
-import Education from './components/educationComponent';
-import Certification from './components/certificationComponent';
-import Work from './components/workComponent';
-import Skills from './components/skillsComponent';
-import classnames from 'classnames';
 import ResumeBuilder from './components/printComponent';
+import NavItemRender from './components/tabViews/navItemComponent';
+import NavPaneRender from './components/tabViews/navPaneComponent';
+import { navData } from './components/tabViews//navData';
 
 function App() {
     const [contact, setContact] = useState({ fname: '', lname: '', email: '', phone: '', loc: '' });
@@ -97,177 +93,83 @@ function App() {
                                     </div>
                                     <div className=" pb-5">
                                         <Nav tabs>
-                                            <NavItem className="fc">
-                                                <NavLink
-                                                    className={classnames({ active: activeTab === '1' })}
-                                                    onClick={() => {
-                                                        toggle('1');
-                                                    }}>
-                                                    Summary
-                                                </NavLink>
-                                            </NavItem>
-                                            <NavItem className="fc">
-                                                <NavLink
-                                                    className={classnames({ active: activeTab === '2' })}
-                                                    onClick={() => {
-                                                        toggle('2');
-                                                    }}>
-                                                    Education
-                                                </NavLink>
-                                            </NavItem>
-                                            <NavItem className="fc">
-                                                <NavLink
-                                                    className={classnames({ active: activeTab === '3' })}
-                                                    onClick={() => {
-                                                        toggle('3');
-                                                    }}>
-                                                    Certifications
-                                                </NavLink>
-                                            </NavItem>
-                                            <NavItem className="fc">
-                                                <NavLink
-                                                    className={classnames({ active: activeTab === '4' })}
-                                                    onClick={() => {
-                                                        toggle('4');
-                                                    }}>
-                                                    Skills
-                                                </NavLink>
-                                            </NavItem>
-                                            <NavItem className="fc">
-                                                <NavLink
-                                                    className={classnames({ active: activeTab === '5' })}
-                                                    onClick={() => {
-                                                        toggle('5');
-                                                    }}>
-                                                    Work History
-                                                </NavLink>
-                                            </NavItem>
+                                            {navData.map((item, i) => (
+                                                <NavItemRender key={uniqid()} num={item.num} name={item.name} activeTab={activeTab} toggle={toggle} />
+                                            ))}
                                         </Nav>
 
                                         <TabContent activeTab={activeTab}>
-                                            <TabPane tabId="1">
-                                                <div className="pb-5">
-                                                    <Card className="pt-3">
-                                                        <CardHeader className="mb-3">
-                                                            <Row className=" pr-3 pl-3">
-                                                                <Col md={12} className="text-dark fc text-center h1">
-                                                                    Add Summary
-                                                                </Col>
-                                                            </Row>
-                                                        </CardHeader>
-                                                        <CardBody className="justify-content-center">
-                                                            <Summary summary={summary} setSummary={setSummary} onDelete={handleSummaryDelete} />
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            </TabPane>
-                                            <TabPane tabId="2">
-                                                <div className="pb-5">
-                                                    <Card className="pt-3">
-                                                        <CardHeader className="mb-3">
-                                                            <Row className=" pr-3 pl-3">
-                                                                <Col md={10} className="text-dark fc text-center h1">
-                                                                    Add Education
-                                                                </Col>
-                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
-                                                                    <span
-                                                                        onClick={() => {
-                                                                            addEducation();
-                                                                        }}>
-                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
-                                                                    </span>
-                                                                </Col>
-                                                            </Row>
-                                                        </CardHeader>
-                                                        <CardBody className="justify-content-center">
-                                                            {eduArray.map((item, i) => (
-                                                                <Education key={item.id} eduArray={eduArray} setEduArray={setEduArray} education={item} handleDelete={handleEduDelete} />
-                                                            ))}
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            </TabPane>
-
-                                            <TabPane tabId="3">
-                                                <div className="pb-5">
-                                                    <Card className="pt-3">
-                                                        <CardHeader className="mb-3">
-                                                            <Row className=" pr-3 pl-3">
-                                                                <Col md={10} className="text-center h1 text-dark fc ">
-                                                                    Add Certifications
-                                                                </Col>
-                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
-                                                                    <span
-                                                                        onClick={() => {
-                                                                            addCert();
-                                                                        }}>
-                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
-                                                                    </span>
-                                                                </Col>
-                                                            </Row>
-                                                        </CardHeader>
-                                                        <CardBody className="justify-content-center">
-                                                            {certArray.map((item, i) => (
-                                                                <Certification key={item.id} cert={item} certArray={certArray} setCertArray={setCertArray} handleDelete={handleCertDelete} />
-                                                            ))}
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            </TabPane>
-
-                                            <TabPane tabId="4">
-                                                <div className="pb-5">
-                                                    <Card className="pt-3">
-                                                        <CardHeader className="mb-3">
-                                                            <Row className=" pr-3 pl-3">
-                                                                <Col md={10} className="text-center h1 text-dark fc ">
-                                                                    Add Skills
-                                                                </Col>
-                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
-                                                                    <span
-                                                                        onClick={() => {
-                                                                            addSkills();
-                                                                        }}>
-                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
-                                                                    </span>
-                                                                </Col>
-                                                            </Row>
-                                                        </CardHeader>
-                                                        <CardBody className="justify-content-center">
-                                                            {skillsArray.map((item, i) => (
-                                                                <Skills key={item.id} skills={item} skillsArray={skillsArray} setSkillsArray={setSkillsArray} handleDelete={handleSkillsDelete} />
-                                                            ))}
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            </TabPane>
-
-                                            <TabPane tabId="5">
-                                                <div className="pb-5">
-                                                    <Card className="pt-3">
-                                                        <CardHeader className="mb-3">
-                                                            <Row className=" pr-3 pl-3">
-                                                                <Col md={10} className="text-center h1 text-dark fc ">
-                                                                    Add Work History
-                                                                </Col>
-                                                                <Col md={2} style={{ paddingRight: '35px', textAlign: 'right' }}>
-                                                                    <span
-                                                                        onClick={() => {
-                                                                            addWork();
-                                                                        }}>
-                                                                        <BsFillPlusCircleFill size="2em" style={{ color: 'green' }} />
-                                                                    </span>
-                                                                </Col>
-                                                            </Row>
-                                                        </CardHeader>
-                                                        <CardBody className="justify-content-center">
-                                                            {workArray.map((item, i) => (
-                                                                <Work key={item.id} work={item} descArray={descArray} workArray={workArray} setWorkArray={setWorkArray} addWorkDesc={addWorkDesc} setDescArray={setDescArray} handleDescDelete={handleDescDelete} handleDelete={handleWorkDelete} />
-                                                            ))}
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            </TabPane>
+                                            {navData.map((item, i) => {
+                                                if (item.name === 'Summary') {
+                                                    return (
+                                                        <NavPaneRender
+                                                            key={'001'}
+                                                            name={item.name}
+                                                            num={item.num}
+                                                            summary={summary}
+                                                            setSummary={setSummary}
+                                                            handleSummaryDelete={handleSummaryDelete}
+                                                        />
+                                                    );
+                                                } else if (item.name === 'Education') {
+                                                    return (
+                                                        <NavPaneRender
+                                                            key={'002'}
+                                                            name={item.name}
+                                                            num={item.num}
+                                                            add={addEducation}
+                                                            eduArray={eduArray}
+                                                            setEduArray={setEduArray}
+                                                            education={item}
+                                                            handleEduDelete={handleEduDelete}
+                                                        />
+                                                    );
+                                                } else if (item.name === 'Certifications') {
+                                                    return (
+                                                        <NavPaneRender
+                                                            key={'003'}
+                                                            name={item.name}
+                                                            num={item.num}
+                                                            add={addCert}
+                                                            cert={item}
+                                                            certArray={certArray}
+                                                            setCertArray={setCertArray}
+                                                            handleCertDelete={handleCertDelete}
+                                                        />
+                                                    );
+                                                } else if (item.name === 'Skills') {
+                                                    return (
+                                                        <NavPaneRender
+                                                            key={'004'}
+                                                            name={item.name}
+                                                            num={item.num}
+                                                            add={addSkills}
+                                                            skills={item}
+                                                            skillsArray={skillsArray}
+                                                            setSkillsArray={setSkillsArray}
+                                                            handleSkillsDelete={handleSkillsDelete}
+                                                        />
+                                                    );
+                                                } else if (item.name === 'Work History') {
+                                                    return (
+                                                        <NavPaneRender
+                                                            key={'005'}
+                                                            name={item.name}
+                                                            num={item.num}
+                                                            add={addWork}
+                                                            work={item}
+                                                            descArray={descArray}
+                                                            workArray={workArray}
+                                                            setWorkArray={setWorkArray}
+                                                            addWorkDesc={addWorkDesc}
+                                                            setDescArray={setDescArray}
+                                                            handleDescDelete={handleDescDelete}
+                                                            handleWorkDelete={handleWorkDelete}
+                                                        />
+                                                    );
+                                                }
+                                                return <div></div>;
+                                            })}
                                         </TabContent>
                                     </div>
                                 </CardBody>
@@ -282,7 +184,16 @@ function App() {
         return (
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
-                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} workArray={workArray} descArray={descArray} />
+                    <ResumeBuilder
+                        contact={contact}
+                        setPreview={setPreview}
+                        summary={summary}
+                        eduArray={eduArray}
+                        certArray={certArray}
+                        skillsArray={skillsArray}
+                        workArray={workArray}
+                        descArray={descArray}
+                    />
                 </Container>
             </div>
         );
