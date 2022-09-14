@@ -158,3 +158,32 @@
 .certCont {
 	padding-bottom: 10px !important;
 }
+.skillDisplay {
+	border-bottom: 3px solid;
+	margin-left: 25px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	width: 90%;
+	height: 45px;
+	float: left;
+	font-weight: bold;
+	line-height: 45px;
+}
+.skills {
+	float: left;
+}
+.skillsInside {
+	margin-left: 35px;
+	width: 225px;
+	float: left;
+}
+.skR {
+	border-right: 3px solid #d9d9d9;
+}
+.ski {
+	float: left;
+}
+.skii {
+	margin-right: 15px;
+	float: right;
+}

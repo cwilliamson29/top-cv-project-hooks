@@ -34,7 +34,7 @@ function App() {
         setEduArray([...eduArray, { id: uniqid(), school: '', study: '', major: '', dateFrom: '', dateTo: '' }]);
     };
     const addCert = () => {
-        setCertArray([...eduArray, { id: uniqid(), cert: '', source: '', date: '' }]);
+        setCertArray([...certArray, { id: uniqid(), cert: '', source: '', date: '' }]);
     };
     const addWork = () => {
         setWorkArray([...workArray, { id: uniqid(), company: '', title: '', dateFrom: '', dateTo: '' }]);
@@ -289,7 +289,7 @@ function App() {
         return (
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
-                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} />
+                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} workArray={workArray} />
                     <Button onClick={() => console.log(summary)}>console summary</Button>
                     <Button onClick={() => console.log(contact)}>console contact</Button>
                     <Button onClick={() => console.log(eduArray)}>console education</Button>

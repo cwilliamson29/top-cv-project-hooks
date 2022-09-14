@@ -11,6 +11,7 @@ const ResumeBuilder = (props) => {
 	const educ = props.eduArray;
 	const cert = props.certArray;
 	const skills = props.skillsArray;
+	const work = props.workArray;
 	const [activeTab, setActiveTab] = useState('1');
 	const [abr, setAbr] = useState('100');
 	const [name, setName] = useState('50');
@@ -25,6 +26,8 @@ const ResumeBuilder = (props) => {
 	const [cert1, setCert1] = useState('16');
 	const [cert2, setCert2] = useState('12');
 	const [cert3, setCert3] = useState('12');
+	const [skill1, setSkill1] = useState('14');
+	const [skill2, setSkill2] = useState('14');
 
 	const colorOptions = [
 		{ value: 'hsl(225, 100%, 55%)', label: 'Blue' },
@@ -281,6 +284,38 @@ const ResumeBuilder = (props) => {
 											</div>
 										</div>
 									</TabPane>
+									<TabPane tabId="4">
+										<div className="row h5 fw-bold pt-1">
+											<div className="col-md-12" style={{ paddingLeft: '50px' }}>
+												<p>Adjust your font size below</p>
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-5 text-end">
+														<Label className="text-primary fw-bold">Skills Name:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setSkill1(e.target.value)} value={skill1} />
+													</div>
+												</div>
+											</div>
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-3 text-end">
+														<Label className="text-primary fw-bold">Experience:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setSkill2(e.target.value)} value={skill2} />
+													</div>
+												</div>
+											</div>
+											<div className="col-md-4 bg-clight">
+												<div className="row pb-1 bg-clight"></div>
+											</div>
+										</div>
+									</TabPane>
 								</TabContent>
 							</div>
 						</CardBody>
@@ -290,7 +325,30 @@ const ResumeBuilder = (props) => {
 			</Row>
 
 			<div className="row justify-content-center">
-				<ModernTemplate ref={componentRef} info={contact} summary={summary} educ={educ} cert={cert} skills={skills} abr={abr} name={name} sumSize={sumSize} loc={loc} phone={phone} email={email} color={color} edu1={edu1} edu2={edu2} edu3={edu3} cert1={cert1} cert2={cert2} cert3={cert3} />
+				<ModernTemplate
+					ref={componentRef}
+					info={contact}
+					summary={summary}
+					educ={educ}
+					cert={cert}
+					skills={skills}
+					work={work}
+					abr={abr}
+					name={name}
+					sumSize={sumSize}
+					loc={loc}
+					phone={phone}
+					email={email}
+					color={color}
+					edu1={edu1}
+					edu2={edu2}
+					edu3={edu3}
+					cert1={cert1}
+					cert2={cert2}
+					cert3={cert3}
+					skill1={skill1}
+					skill2={skill2}
+				/>
 			</div>
 		</div>
 	);

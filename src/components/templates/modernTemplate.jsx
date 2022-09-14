@@ -109,6 +109,39 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 				<div className="summaryDesc" style={{ fontSize: props.sumSize + 'px' }}>
 					{props.summary}
 				</div>
+				<div className="skillDisplay" style={{ borderColor: props.color }}>
+					Skills
+				</div>
+				<div className="skills">
+					{props.skills.map((item, idx) => {
+						let f = idx + 1;
+						let g = parseInt(props.skill1) + 12;
+						let h = g + 'px';
+						if (f % 2 === 0) {
+							return (
+								<div key={idx} className="skillsInside">
+									<div className="ski" style={{ fontSize: props.skill1 + 'px', lineHeight: h }}>
+										{item.skill}
+									</div>
+									<div className="skii" style={{ fontSize: props.skill2 + 'px', lineHeight: h }}>
+										{item.exp}
+									</div>
+								</div>
+							);
+						} else {
+							return (
+								<div key={idx} className="skillsInside skR">
+									<div className="ski" style={{ fontSize: props.skill1 + 'px', lineHeight: h }}>
+										{item.skill}
+									</div>
+									<div className="skii" style={{ fontSize: props.skill2 + 'px', lineHeight: h }}>
+										{item.exp}
+									</div>
+								</div>
+							);
+						}
+					})}
+				</div>
 			</div>
 		</div>
 	);
