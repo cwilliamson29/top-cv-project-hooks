@@ -8,7 +8,6 @@ import Education from './components/educationComponent';
 import Certification from './components/certificationComponent';
 import Work from './components/workComponent';
 import Skills from './components/skillsComponent';
-import PreviewValidate from './components/ValidatorComponent';
 import classnames from 'classnames';
 import ResumeBuilder from './components/printComponent';
 
