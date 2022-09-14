@@ -115,13 +115,13 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 				<div className="skills">
 					{props.skills.map((item, idx) => {
 						let f = idx + 1;
-						let g = parseInt(props.skill1) + 12;
+						let g = parseInt(props.skill1) + 8;
 						let h = g + 'px';
 						if (f % 2 === 0) {
 							return (
 								<div key={idx} className="skillsInside">
 									<div className="ski" style={{ fontSize: props.skill1 + 'px', lineHeight: h }}>
-										{item.skill}
+										<li>{item.skill}</li>
 									</div>
 									<div className="skii" style={{ fontSize: props.skill2 + 'px', lineHeight: h }}>
 										{item.exp}
@@ -132,7 +132,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 							return (
 								<div key={idx} className="skillsInside skR">
 									<div className="ski" style={{ fontSize: props.skill1 + 'px', lineHeight: h }}>
-										{item.skill}
+										<li>{item.skill}</li>
 									</div>
 									<div className="skii" style={{ fontSize: props.skill2 + 'px', lineHeight: h }}>
 										{item.exp}
@@ -141,6 +141,35 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 							);
 						}
 					})}
+				</div>
+
+				<div className="skillDisplay" style={{ borderColor: props.color }}>
+					Work History
+				</div>
+				<div className="work">
+					{props.work.map((item, i) => (
+						<div key={item.id}>
+							<div className="fb" style={{ fontSize: props.work1 + 'px' }}>
+								{item.company}
+							</div>
+							<h5 className="fi" style={{ fontSize: props.work2 + 'px' }}>
+								{item.title} | {item.dateFrom} to {item.dateTo}
+							</h5>
+							<div>
+								<ul>
+									{props.desc.map((item2, i) => {
+										if (item2.parentId == item.id) {
+											return (
+												<div key={item2.id} className="wii" style={{ fontSize: props.work3 + 'px' }}>
+													<li>{item2.item}</li>
+												</div>
+											);
+										}
+									})}
+								</ul>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

@@ -289,7 +289,7 @@ function App() {
         return (
             <div>
                 <Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
-                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} workArray={workArray} />
+                    <ResumeBuilder contact={contact} setPreview={setPreview} summary={summary} eduArray={eduArray} certArray={certArray} skillsArray={skillsArray} workArray={workArray} descArray={descArray} />
                     <Button onClick={() => console.log(summary)}>console summary</Button>
                     <Button onClick={() => console.log(contact)}>console contact</Button>
                     <Button onClick={() => console.log(eduArray)}>console education</Button>

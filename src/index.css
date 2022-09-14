@@ -39,6 +39,9 @@ body {
 .fi {
     font-style: italic;
 }
+.fb {
+    font-weight: bolder;
+}
 .bg-clight {
     background-color: lightgray;
 }

@@ -173,8 +173,8 @@
 	float: left;
 }
 .skillsInside {
-	margin-left: 35px;
-	width: 225px;
+	margin-left: 45px;
+	width: 220px;
 	float: left;
 }
 .skR {
@@ -186,4 +186,12 @@
 .skii {
 	margin-right: 15px;
 	float: right;
+}
+.work {
+	margin-left: 25px;
+	width: 90%;
+	float: left;
+}
+.wii {
+	margin-bottom: 6px;
 }

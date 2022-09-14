@@ -12,6 +12,7 @@ const ResumeBuilder = (props) => {
 	const cert = props.certArray;
 	const skills = props.skillsArray;
 	const work = props.workArray;
+	const desc = props.descArray;
 	const [activeTab, setActiveTab] = useState('1');
 	const [abr, setAbr] = useState('100');
 	const [name, setName] = useState('50');
@@ -28,11 +29,16 @@ const ResumeBuilder = (props) => {
 	const [cert3, setCert3] = useState('12');
 	const [skill1, setSkill1] = useState('14');
 	const [skill2, setSkill2] = useState('14');
+	const [work1, setWork1] = useState('18');
+	const [work2, setWork2] = useState('14');
+	const [work3, setWork3] = useState('12');
 
 	const colorOptions = [
 		{ value: 'hsl(225, 100%, 55%)', label: 'Blue' },
+		{ value: 'hsl(220, 100%, 30%)', label: 'Dark Blue' },
 		{ value: 'hsl(0, 0%, 0%)', label: 'Black' },
 		{ value: 'hsl(0, 100%, 55%)', label: 'Red' },
+		{ value: 'hsl(0, 100%, 25%)', label: 'Maroon' },
 		{ value: 'hsl(36, 100%, 35%)', label: 'Dark Orange' },
 	];
 
@@ -316,6 +322,45 @@ const ResumeBuilder = (props) => {
 											</div>
 										</div>
 									</TabPane>
+									<TabPane tabId="5">
+										<div className="row h5 fw-bold pt-1">
+											<div className="col-md-12" style={{ paddingLeft: '50px' }}>
+												<p>Adjust your font size below</p>
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-5 text-end">
+														<Label className="text-primary fw-bold">Company:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setWork1(e.target.value)} value={work1} />
+													</div>
+												</div>
+											</div>
+											<div className="col-md-4">
+												<div className="row pb-1 bg-clight">
+													<div className="col-3 text-end">
+														<Label className="text-primary fw-bold">Title:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setWork2(e.target.value)} value={work2} />
+													</div>
+												</div>
+											</div>
+											<div className="col-md-4 bg-clight">
+												<div className="row pb-1 bg-clight">
+													<div className="col-4 text-end">
+														<Label className="text-primary fw-bold">Descriptions:</Label>
+													</div>
+													<div className="col-4">
+														<Input type="text" onChange={(e) => setWork3(e.target.value)} value={work3} />
+													</div>
+												</div>
+											</div>
+										</div>
+									</TabPane>
 								</TabContent>
 							</div>
 						</CardBody>
@@ -333,6 +378,7 @@ const ResumeBuilder = (props) => {
 					cert={cert}
 					skills={skills}
 					work={work}
+					desc={desc}
 					abr={abr}
 					name={name}
 					sumSize={sumSize}
@@ -348,6 +394,9 @@ const ResumeBuilder = (props) => {
 					cert3={cert3}
 					skill1={skill1}
 					skill2={skill2}
+					work1={work1}
+					work2={work2}
+					work3={work3}
 				/>
 			</div>
 		</div>
