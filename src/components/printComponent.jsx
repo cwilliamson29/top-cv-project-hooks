@@ -1,20 +1,15 @@
-import React, { useState, useRef } from 'react';
-import { Card, CardHeader, Row, CardBody, Col, Button, Input, Label, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
+import React, { useState } from 'react';
+import { Container, Card, CardHeader, Row, CardBody, Col, Button, Input, Label, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import ReactToPrint from 'react-to-print';
 import classnames from 'classnames';
 import { ModernTemplate } from './templates/modernTemplate';
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
+import { Outlet, Link } from 'react-router-dom';
 
 const ResumeBuilder = (props) => {
-	const { contact, setPreview, summary, eduArray, certArray, skillsArray, workArray, descArray } = useContext(DataContext);
+	const { contact, summary } = useContext(DataContext);
 	const componentRef = React.useRef(null);
-
-	const educ = eduArray;
-	const cert = certArray;
-	const skills = skillsArray;
-	const work = workArray;
-	const desc = descArray;
 	const [activeTab, setActiveTab] = useState('1');
 	const [abr, setAbr] = useState('100');
 	const [name, setName] = useState('50');
@@ -49,7 +44,7 @@ const ResumeBuilder = (props) => {
 	};
 
 	return (
-		<div>
+		<Container className="text-dark container-fluid min-vh-100 d-flex flex-column">
 			<Row>
 				<div className="mt-5"></div>
 				<Col md={1}></Col>
@@ -58,9 +53,10 @@ const ResumeBuilder = (props) => {
 						<CardHeader className="text-center h1 fc text-light bg-dark">
 							<Row>
 								<Col md={2}>
-									<Button onClick={() => props.setPreview(false)} className="bg-primary">
-										Go Back
-									</Button>
+									<Link to="/">
+										<Button className="bg-primary">Go Back</Button>
+									</Link>
+									<Outlet />
 								</Col>
 								<Col md={8}>
 									<h1>Rob The Resume Builder</h1>
@@ -376,11 +372,6 @@ const ResumeBuilder = (props) => {
 					ref={componentRef}
 					info={contact}
 					summary={summary}
-					educ={educ}
-					cert={cert}
-					skills={skills}
-					work={work}
-					desc={desc}
 					abr={abr}
 					name={name}
 					sumSize={sumSize}
@@ -401,7 +392,7 @@ const ResumeBuilder = (props) => {
 					work3={work3}
 				/>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

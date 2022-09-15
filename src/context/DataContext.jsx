@@ -51,11 +51,27 @@ export const DataProvider = ({ children }) => {
 			})
 		);
 	};
-	const updateSkillsArray = (itemId, cert, source, major, date) => {
+	const updateSkillsArray = (itemId, skill, exp) => {
 		setSkillsArray(
 			skillsArray.map((x) => {
 				if (x.id !== itemId) return x;
-				return { ...x, cert: cert, source: source, date: date };
+				return { ...x, skill: skill, exp: exp };
+			})
+		);
+	};
+	const updateWorkArray = (itemId, company, title, dateFrom, dateTo) => {
+		setWorkArray(
+			workArray.map((x) => {
+				if (x.id !== itemId) return x;
+				return { ...x, company: company, title: title, dateFrom: dateFrom, dateTo: dateTo };
+			})
+		);
+	};
+	const updateWorkDescArray = (itemId, text) => {
+		setDescArray(
+			descArray.map((x) => {
+				if (x.id !== itemId) return x;
+				return { ...x, text: '' };
 			})
 		);
 	};
@@ -84,6 +100,8 @@ export const DataProvider = ({ children }) => {
 	return (
 		<DataContext.Provider
 			value={{
+				preview,
+				setPreview,
 				contact,
 				setContact,
 				handleInfoDelete,
@@ -109,6 +127,8 @@ export const DataProvider = ({ children }) => {
 				updateEduArray,
 				updateCertArray,
 				updateSkillsArray,
+				updateWorkArray,
+				updateWorkDescArray,
 				handleSummaryDelete,
 				handleEduDelete,
 				handleCertDelete,

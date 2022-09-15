@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import DataContext from '../../context/DataContext';
 
 export const ModernTemplate = React.forwardRef((props, ref) => {
-	const { contact, setPreview, summary, eduArray, certArray, skillsArray, workArray, descArray } = useContext(DataContext);
+	const { contact, summary, eduArray, certArray, skillsArray, workArray, descArray } = useContext(DataContext);
 	const abr = {
 		borderColor: props.color,
 		fontSize: props.abr + 'px',
@@ -28,7 +28,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					<div className="loc1" style={{ backgroundColor: props.color }}>
 						<BiCurrentLocation size="1em" style={{ color: 'white' }} />
 					</div>
-					<div class="loc2" style={{ fontSize: props.loc + 'px' }}>
+					<div className="loc2" style={{ fontSize: props.loc + 'px' }}>
 						{contact.loc}
 					</div>
 				</div>
@@ -36,7 +36,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					<div className="ph1" style={{ backgroundColor: props.color }}>
 						<BsFillTelephoneFill size="1em" style={{ color: 'white' }} />
 					</div>
-					<div class="ph2" style={{ fontSize: props.phone + 'px' }}>
+					<div className="ph2" style={{ fontSize: props.phone + 'px' }}>
 						{contact.phone}
 					</div>
 				</div>
@@ -44,7 +44,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					<div className="ph1" style={{ backgroundColor: props.color }}>
 						<MdOutlineAlternateEmail size="1em" style={{ color: 'white' }} />
 					</div>
-					<div class="ph2" style={{ fontSize: props.email + 'px' }}>
+					<div className="ph2" style={{ fontSize: props.email + 'px' }}>
 						{contact.email}
 					</div>
 				</div>
@@ -54,7 +54,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 						<span>Education</span>
 					</div>
 					<div className="educ">
-						{props.educ.map((item, idx) => (
+						{eduArray.map((item, idx) => (
 							<div key={item.id}>
 								<div className={'study'} style={{ fontSize: props.edu1 + 'px' }}>
 									{item.study}
@@ -77,7 +77,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 						<span>Certifications</span>
 					</div>
 					<div className="educ">
-						{props.cert.map((item, idx) => (
+						{certArray.map((item, idx) => (
 							<div key={item.id}>
 								<div className={'cert'} style={{ fontSize: props.cert1 + 'px' }}>
 									{item.cert}
@@ -110,13 +110,13 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					</div>
 				</div>
 				<div className="summaryDesc" style={{ fontSize: props.sumSize + 'px' }}>
-					{props.summary}
+					{summary}
 				</div>
 				<div className="skillDisplay" style={{ borderColor: props.color }}>
 					Skills
 				</div>
 				<div className="skills">
-					{props.skills.map((item, idx) => {
+					{skillsArray.map((item, idx) => {
 						let f = idx + 1;
 						let g = parseInt(props.skill1) + 8;
 						let h = g + 'px';
@@ -150,7 +150,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					Work History
 				</div>
 				<div className="work">
-					{props.work.map((item, i) => (
+					{workArray.map((item, i) => (
 						<div key={item.id}>
 							<div className="fb" style={{ fontSize: props.work1 + 'px' }}>
 								{item.company}
@@ -160,7 +160,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 							</h5>
 							<div>
 								<ul>
-									{props.desc.map((item2, i) => {
+									{descArray.map((item2, i) => {
 										if (item2.parentId == item.id) {
 											return (
 												<div key={item2.id} className="wii" style={{ fontSize: props.work3 + 'px' }}>
@@ -175,6 +175,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					))}
 				</div>
 			</div>
+			<button onClick={() => console.log(contact)}>console contact</button>
 		</div>
 	);
 });

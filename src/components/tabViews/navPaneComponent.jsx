@@ -30,7 +30,7 @@ export default function NavPaneRender(props) {
 						{props.name === 'Summary' ? <Summary /> : null}
 						{props.name === 'Education' ? eduArray.map((item, i) => <Education key={item.id} education={item} />) : null}
 						{props.name === 'Certifications' ? certArray.map((item, i) => <Certification key={item.id} cert={item} />) : null}
-						{props.name === 'Skills' ? skillsArray.map((item, i) => <Skills key={item.id} skills={item} skillsArray={props.skillsArray} setSkillsArray={props.setSkillsArray} handleDelete={props.handleSkillsDelete} />) : null}
+						{props.name === 'Skills' ? skillsArray.map((item, i) => <Skills key={item.id} skills={item} />) : null}
 						{props.name === 'Work History'
 							? workArray.map((item, i) => <Work key={item.id} work={item} descArray={props.descArray} workArray={props.workArray} setWorkArray={props.setWorkArray} addWorkDesc={props.addWorkDesc} setDescArray={props.setDescArray} handleDescDelete={props.handleDescDelete} handleDelete={props.handleWorkDelete} />)
 							: null}
