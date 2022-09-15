@@ -3,16 +3,18 @@ import { Card, CardHeader, Row, CardBody, Col, Button, Input, Label, Nav, NavIte
 import ReactToPrint from 'react-to-print';
 import classnames from 'classnames';
 import { ModernTemplate } from './templates/modernTemplate';
+import { useContext } from 'react';
+import DataContext from '../context/DataContext';
 
 const ResumeBuilder = (props) => {
+	const { contact, setPreview, summary, eduArray, certArray, skillsArray, workArray, descArray } = useContext(DataContext);
 	const componentRef = React.useRef(null);
-	const contact = props.contact;
-	const summary = props.summary;
-	const educ = props.eduArray;
-	const cert = props.certArray;
-	const skills = props.skillsArray;
-	const work = props.workArray;
-	const desc = props.descArray;
+
+	const educ = eduArray;
+	const cert = certArray;
+	const skills = skillsArray;
+	const work = workArray;
+	const desc = descArray;
 	const [activeTab, setActiveTab] = useState('1');
 	const [abr, setAbr] = useState('100');
 	const [name, setName] = useState('50');

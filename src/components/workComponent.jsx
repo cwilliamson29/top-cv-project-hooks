@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Row, Card, CardHeader, CardBody, Label, Input, Col } from 'reactstrap';
+import { Row, Card, CardHeader, CardBody, Label, Input, Col, Button } from 'reactstrap';
 import { AiFillEye } from 'react-icons/ai';
 import { FaTrashAlt, FaPenAlt } from 'react-icons/fa';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { useContext } from 'react';
+import DataContext from '../context/DataContext';
 
 function WorkHistory(props) {
     const [editing, setEditing] = useState(true);
+    const { contact } = useContext(DataContext);
 
     const setWorkArrayId = (itemId, company, title, dateFrom, dateTo) => {
         let newWorkArray = [];
@@ -64,33 +67,59 @@ function WorkHistory(props) {
                     </Row>
                 </CardHeader>
                 <CardBody>
+                    <Button onClick={() => console.log(contact)}>console contact</Button>
+                    {/*********************BUTTON*******************/}
                     <Row className="pr-5 pl-2">
                         <div className="col-md-2 text-end pb-3">
                             <Label for="school">Company:</Label>
                         </div>
                         <div className="col-md-4 pb-3">
-                            <Input type="text" onChange={(e) => setWorkArrayId(props.work.id, e.target.value, props.work.title, props.work.dateFrom, props.work.dateTo)} value={props.work.company} id="company" placeholder="Company Name" />
+                            <Input
+                                type="text"
+                                onChange={(e) => setWorkArrayId(props.work.id, e.target.value, props.work.title, props.work.dateFrom, props.work.dateTo)}
+                                value={props.work.company}
+                                id="company"
+                                placeholder="Company Name"
+                            />
                         </div>
 
                         <div className="col-md-2 text-end pb-3">
                             <Label for="study">Job Title:</Label>
                         </div>
                         <div className="col-md-4 pb-3">
-                            <Input type="text" onChange={(e) => setWorkArrayId(props.work.id, props.work.company, e.target.value, props.work.dateFrom, props.work.dateTo)} value={props.work.title} id="title" placeholder="Your Title" />
+                            <Input
+                                type="text"
+                                onChange={(e) => setWorkArrayId(props.work.id, props.work.company, e.target.value, props.work.dateFrom, props.work.dateTo)}
+                                value={props.work.title}
+                                id="title"
+                                placeholder="Your Title"
+                            />
                         </div>
 
                         <div className="col-md-2 text-end pb-3">
                             <Label for="dateFrom">Date From:</Label>
                         </div>
                         <div className="col-md-4 pb-3">
-                            <Input type="text" onChange={(e) => setWorkArrayId(props.work.id, props.work.company, props.work.title, e.target.value, props.work.dateTo)} value={props.work.dateFrom} id="dateFrom" placeholder="September 2017" />
+                            <Input
+                                type="text"
+                                onChange={(e) => setWorkArrayId(props.work.id, props.work.company, props.work.title, e.target.value, props.work.dateTo)}
+                                value={props.work.dateFrom}
+                                id="dateFrom"
+                                placeholder="September 2017"
+                            />
                         </div>
 
                         <div className="col-md-2 text-end pb-3">
                             <Label for="dateTo">Date To:</Label>
                         </div>
                         <div className="col-md-4 pb-3">
-                            <Input type="text" onChange={(e) => setWorkArrayId(props.work.id, props.work.company, props.work.title, props.work.dateFrom, e.target.value)} value={props.work.dateTo} id="dateTo" placeholder="Present" />
+                            <Input
+                                type="text"
+                                onChange={(e) => setWorkArrayId(props.work.id, props.work.company, props.work.title, props.work.dateFrom, e.target.value)}
+                                value={props.work.dateTo}
+                                id="dateTo"
+                                placeholder="Present"
+                            />
                         </div>
 
                         <div className="col-md-3 text-end pb-3">
@@ -117,7 +146,14 @@ function WorkHistory(props) {
                                                 </div>
                                                 <div className="col-md-10 pb-3">
                                                     <li>
-                                                        <Input className="col-md-9" type="textarea" onChange={(e) => setWorkDescId(item.id, e.target.value)} value={item.item} id="desc" placeholder="Present" />
+                                                        <Input
+                                                            className="col-md-9"
+                                                            type="textarea"
+                                                            onChange={(e) => setWorkDescId(item.id, e.target.value)}
+                                                            value={item.item}
+                                                            id="desc"
+                                                            placeholder="Present"
+                                                        />
                                                     </li>
                                                 </div>
                                             </div>

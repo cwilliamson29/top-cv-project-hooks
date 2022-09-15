@@ -3,8 +3,11 @@ import './modernTemplate.css';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
+import { useContext } from 'react';
+import DataContext from '../../context/DataContext';
 
 export const ModernTemplate = React.forwardRef((props, ref) => {
+	const { contact, setPreview, summary, eduArray, certArray, skillsArray, workArray, descArray } = useContext(DataContext);
 	const abr = {
 		borderColor: props.color,
 		fontSize: props.abr + 'px',
@@ -18,15 +21,15 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 			{/*************LEFT COLUMN************/}
 			<div className="leftColumn">
 				<div className="abr" style={abr}>
-					{props.info.fname[0]}
-					{props.info.lname[0]}
+					{contact.fname[0]}
+					{contact.lname[0]}
 				</div>
 				<div className="col-mar loc" style={{ borderColor: props.color }}>
 					<div className="loc1" style={{ backgroundColor: props.color }}>
 						<BiCurrentLocation size="1em" style={{ color: 'white' }} />
 					</div>
 					<div class="loc2" style={{ fontSize: props.loc + 'px' }}>
-						{props.info.loc}
+						{contact.loc}
 					</div>
 				</div>
 				<div className="ph" style={{ borderColor: props.color }}>
@@ -34,7 +37,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 						<BsFillTelephoneFill size="1em" style={{ color: 'white' }} />
 					</div>
 					<div class="ph2" style={{ fontSize: props.phone + 'px' }}>
-						{props.info.phone}
+						{contact.phone}
 					</div>
 				</div>
 				<div className="ph" style={{ borderColor: props.color }}>
@@ -42,7 +45,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 						<MdOutlineAlternateEmail size="1em" style={{ color: 'white' }} />
 					</div>
 					<div class="ph2" style={{ fontSize: props.email + 'px' }}>
-						{props.info.email}
+						{contact.email}
 					</div>
 				</div>
 
