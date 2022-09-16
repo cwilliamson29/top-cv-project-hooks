@@ -46,3 +46,37 @@ body {
 .bg-clight {
     background-color: lightgray;
 }
+input {
+    background-color: transparent;
+    border: 0 !important;
+    padding: 8px !important;
+    border-bottom: 1px solid #d3d3d3 !important;
+}
+input:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+}
+.programInput {
+    font-size: 45px !important;
+    font-style: italic !important;
+    width: auto !important;
+    float: left;
+}
+.schoolInput {
+    margin-left: 5px;
+    margin-top: 10px !important;
+    font-size: 25px;
+    width: auto !important;
+}
+.majorInput {
+    margin-left: 20px;
+    margin-top: 1px !important;
+    font-size: 35px;
+}
+.dateInputTo {
+    font-style: italic !important;
+    width: 200px !important;
+}
+.dateInputFrom {
+    font-style: italic !important;
+}

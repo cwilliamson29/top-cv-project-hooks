@@ -35,11 +35,15 @@ export const DataProvider = ({ children }) => {
 	const addSkills = () => {
 		setSkillsArray([...skillsArray, { id: uniqid(), skill: '', exp: '' }]);
 	};
-	const updateEduArray = (itemId, school, study, major, dateFrom, dateTo) => {
+	const updateEduArray = (itemId, item, text) => {
 		setEduArray(
 			eduArray.map((x) => {
 				if (x.id !== itemId) return x;
-				return { ...x, school: school, study: study, major: major, dateFrom: dateFrom, dateTo: dateTo };
+				if (item === 'school') return { ...x, school: text };
+				if (item === 'major') return { ...x, major: text };
+				if (item === 'study') return { ...x, study: text };
+				if (item === 'dateFrom') return { ...x, dateFrom: text };
+				if (item === 'dateTo') return { ...x, dateTo: text };
 			})
 		);
 	};
