@@ -46,6 +46,7 @@ body {
 .bg-clight {
     background-color: lightgray;
 }
+/**********inline stylying***********/
 input {
     background-color: transparent;
     border: 0 !important;
@@ -56,27 +57,73 @@ input:hover {
     background-color: #d3d3d3;
     cursor: pointer;
 }
-.programInput {
+textarea {
+    resize: none !important;
+    overflow: hidden !important;
+    min-height: 14px;
+    max-height: 100px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #d3d3d3 !important;
+}
+textarea:focus {
+    outline: 5px auto Highlight; /* Firefox */
+    outline: 5px auto -webkit-focus-ring-color; /* Chrome, Safari */
+}
+.program {
     font-size: 45px !important;
     font-style: italic !important;
     width: auto !important;
     float: left;
 }
-.schoolInput {
+.school {
     margin-left: 5px;
     margin-top: 10px !important;
     font-size: 25px;
     width: auto !important;
 }
-.majorInput {
+.major {
     margin-left: 20px;
     margin-top: 1px !important;
     font-size: 35px;
 }
-.dateInputTo {
+.dateTo {
     font-style: italic !important;
     width: 200px !important;
 }
-.dateInputFrom {
+.dateFrom {
     font-style: italic !important;
+}
+.name {
+    margin-left: 5px;
+    margin-top: 10px !important;
+    font-size: 35px;
+    width: 100%;
+}
+.epl {
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100%;
+}
+.summaryD {
+    width: 85%;
+}
+.cert {
+    margin-left: 5px;
+    margin-top: 10px !important;
+    font-size: 35px;
+    width: 100%;
+}
+.source {
+    margin-left: 30px;
+    font-style: italic !important;
+    font-size: 24px;
+    width: 100%;
+}
+.date {
+    margin-left: 30px;
+    font-style: italic !important;
+    font-size: 24px;
+    width: 100%;
 }

@@ -1,159 +1,48 @@
-import React, { useState } from 'react';
-import { Row, Label, Input, Col } from 'reactstrap';
-import { AiFillEye } from 'react-icons/ai';
-import { FaTrashAlt, FaPenAlt } from 'react-icons/fa';
+import React from 'react';
+import { Row, Col } from 'reactstrap';
+import { FaTrashAlt } from 'react-icons/fa';
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
 
 function ContactInfo(props) {
-	const [editing, setEditing] = useState(true);
-	const { contact, setContact, handleInfoDelete } = useContext(DataContext);
+	const { contact, handleInfoDelete, setInfo } = useContext(DataContext);
 
-	const setInfo = (fname, lname, email, phone, loc) => {
-		setContact({ fname: fname, lname: lname, email: email, phone: phone, loc: loc });
-	};
+	return (
+		<div className="pb-5">
+			<Row className="mb-3">
+				<Col md={1}></Col>
+				<Col md={10} className="text-center fc">
+					<h4>Personal Information</h4>
+				</Col>
+				<Col md={1} className="text-end">
+					<span onClick={() => handleInfoDelete()}>
+						<FaTrashAlt size="1.5em" style={{ color: 'red' }} />
+					</span>
+				</Col>
+			</Row>
+			<Row>
+				<div className="col-md-5 pb-3">
+					<input type="text" className="name" onChange={(e) => setInfo('fname', e.target.value)} value={contact.fname} name="fname" placeholder="First Name" />
+				</div>
 
-	if (editing) {
-		return (
-			<div className="pb-5">
-				<Row className="mb-3">
-					<Col md={1}>
-						<span
-							onClick={() => {
-								setEditing(false);
-							}}>
-							<AiFillEye size="2.5em" style={{ color: 'orange' }} />
-						</span>
-					</Col>
-					<Col md={10} className="text-center fc">
-						<h4>Personal Information</h4>
-					</Col>
-					<Col md={1} className="text-end">
-						<span onClick={() => handleInfoDelete()}>
-							<FaTrashAlt size="1.5em" style={{ color: 'red' }} />
-						</span>
-					</Col>
-				</Row>
-				<Row>
-					<div className="col-md-2 text-end pb-3">
-						<Label for="fName">First Name:</Label>
-					</div>
-					<div className="col-md-4 pb-3">
-						<Input
-							type="text"
-							onChange={(e) => setInfo(e.target.value, contact.lname, contact.email, contact.phone, contact.loc)}
-							value={contact.fname}
-							name="fname"
-							placeholder="First Name"
-						/>
-					</div>
+				<div className="col-md-5 pb-3">
+					<input type="text" className="name" onChange={(e) => setInfo('lname', e.target.value)} value={contact.lname} name="lname" placeholder="Last Name" />
+				</div>
 
-					<div className="col-md-2 text-end pb-3">
-						<Label for="lname">Last Name:</Label>
-					</div>
-					<div className="col-md-4 pb-3">
-						<Input
-							type="text"
-							onChange={(e) => setInfo(contact.fname, e.target.value, contact.email, contact.phone, contact.loc)}
-							value={contact.lname}
-							name="lname"
-							placeholder="Last Name"
-						/>
-					</div>
+				<div className="col-md-4 pb-3">
+					<input type="email" className="epl" onChange={(e) => setInfo('email', e.target.value)} value={contact.email} name="email" placeholder="You@you.com" />
+				</div>
 
-					<div className="col-md-2 text-end pb-3">
-						<Label for="email">Email:</Label>
-					</div>
-					<div className="col-md-4 pb-3">
-						<Input
-							type="email"
-							onChange={(e) => setInfo(contact.fname, contact.lname, e.target.value, contact.phone, contact.loc)}
-							value={contact.email}
-							name="email"
-							placeholder="You@you.com"
-						/>
-					</div>
+				<div className="col-md-4 pb-3">
+					<input type="phone" className="epl" onChange={(e) => setInfo('phone', e.target.value)} value={contact.phone} name="phone" placeholder="(992) 867-5309" />
+				</div>
 
-					<div className="col-md-2 text-end pb-3">
-						<Label for="phone">Phone:</Label>
-					</div>
-					<div className="col-md-4 pb-3">
-						<Input
-							type="phone"
-							onChange={(e) => setInfo(contact.fname, contact.lname, contact.email, e.target.value, contact.loc)}
-							value={contact.phone}
-							name="phone"
-							placeholder="(992) 867-5309"
-						/>
-					</div>
-					<div className="col-md-2 text-end pb-3">
-						<Label for="phone">Location:</Label>
-					</div>
-					<div className="col-md-6 pb-3">
-						<Input
-							type="loc"
-							onChange={(e) => setInfo(contact.fname, contact.lname, contact.email, contact.phone, e.target.value)}
-							value={contact.loc}
-							name="phone"
-							placeholder="Atlanta, GA, 30301"
-						/>
-					</div>
-				</Row>
-			</div>
-		);
-	} else if (!editing) {
-		return (
-			<div className="pb-5">
-				<Row>
-					<Col md={1}>
-						<span
-							onClick={() => {
-								setEditing(true);
-							}}>
-							<FaPenAlt size="2em" style={{ color: 'darkgreen' }} />
-						</span>
-					</Col>
-					<Col md={10} className="text-center fc">
-						<h4>Personal Information</h4>
-					</Col>
-					<Col md={1} className="text-end">
-						<span onClick={() => handleInfoDelete()}>
-							<FaTrashAlt size="1.5em" style={{ color: 'red' }} />
-						</span>
-					</Col>
-				</Row>
-				<Row>
-					<div className="col-md-2 text-end pb-3">
-						<Label for="firstName">First Name:</Label>
-					</div>
-					<div className="col-md-4 pb-3 fw-bold">
-						<Label for="firstName">{contact.fname}</Label>
-					</div>
-
-					<div className="col-md-2 text-end pb-3">
-						<Label for="lastName">Last Name:</Label>
-					</div>
-					<div className="col-md-4 pb-3 fw-bold">
-						<Label for="lastName">{contact.lname}</Label>
-					</div>
-
-					<div className="col-md-2 text-end pb-3">
-						<Label for="email">Email:</Label>
-					</div>
-					<div className="col-md-4 pb-3 fw-bold">
-						<Label for="email">{contact.email}</Label>
-					</div>
-
-					<div className="col-md-2 text-end pb-3">
-						<Label for="phone">Phone:</Label>
-					</div>
-					<div className="col-md-4 pb-3 fw-bold">
-						<Label for="phone">{contact.phone}</Label>
-					</div>
-				</Row>
-			</div>
-		);
-	}
+				<div className="col-md-4 pb-3">
+					<input type="text" className="epl" onChange={(e) => setInfo('loc', e.target.value)} value={contact.loc} name="phone" placeholder="Atlanta, GA, 30301" />
+				</div>
+			</Row>
+		</div>
+	);
 }
 
 export default ContactInfo;

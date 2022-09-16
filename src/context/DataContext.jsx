@@ -35,6 +35,13 @@ export const DataProvider = ({ children }) => {
 	const addSkills = () => {
 		setSkillsArray([...skillsArray, { id: uniqid(), skill: '', exp: '' }]);
 	};
+	const setInfo = (item, text) => {
+		if (item === 'fname') return setContact({ ...contact, fname: text });
+		if (item === 'lname') return setContact({ ...contact, lname: text });
+		if (item === 'email') return setContact({ ...contact, email: text });
+		if (item === 'phone') return setContact({ ...contact, phone: text });
+		if (item === 'loc') return setContact({ ...contact, loc: text });
+	};
 	const updateEduArray = (itemId, item, text) => {
 		setEduArray(
 			eduArray.map((x) => {
@@ -47,11 +54,14 @@ export const DataProvider = ({ children }) => {
 			})
 		);
 	};
-	const updateCertArray = (itemId, cert, source, major, date) => {
+	const updateCertArray = (itemId, item, text) => {
+		console.log(certArray);
 		setCertArray(
 			certArray.map((x) => {
 				if (x.id !== itemId) return x;
-				return { ...x, cert: cert, source: source, date: date };
+				if (item === 'cert') return { ...x, cert: text };
+				if (item === 'source') return { ...x, source: text };
+				if (item === 'date') return { ...x, date: text };
 			})
 		);
 	};
@@ -108,6 +118,7 @@ export const DataProvider = ({ children }) => {
 				setPreview,
 				contact,
 				setContact,
+				setInfo,
 				handleInfoDelete,
 				summary,
 				setSummary,
