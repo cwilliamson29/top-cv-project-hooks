@@ -8,9 +8,9 @@ import { CertInput } from './utils/certInput';
 function Certification(props) {
 	const { handleCertDelete } = useContext(DataContext);
 	const id = props.cert.id;
-	const [cert, setCert] = useState('');
-	const [source, setSource] = useState('');
-	const [date, setDate] = useState('');
+	const [cert, setCert] = useState(props.cert.cert);
+	const [source, setSource] = useState(props.cert.source);
+	const [date, setDate] = useState(props.cert.date);
 
 	return (
 		<Card className="bg-light text-dark mb-3 border border-info border-2">

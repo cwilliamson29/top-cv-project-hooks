@@ -65,19 +65,23 @@ export const DataProvider = ({ children }) => {
 			})
 		);
 	};
-	const updateSkillsArray = (itemId, skill, exp) => {
+	const updateSkillsArray = (itemId, item, text) => {
 		setSkillsArray(
 			skillsArray.map((x) => {
 				if (x.id !== itemId) return x;
-				return { ...x, skill: skill, exp: exp };
+				if (item === 'skill') return { ...x, skill: text };
+				if (item === 'exp') return { ...x, exp: text };
 			})
 		);
 	};
-	const updateWorkArray = (itemId, company, title, dateFrom, dateTo) => {
+	const updateWorkArray = (itemId, item, text) => {
 		setWorkArray(
 			workArray.map((x) => {
 				if (x.id !== itemId) return x;
-				return { ...x, company: company, title: title, dateFrom: dateFrom, dateTo: dateTo };
+				if (item === 'company') return { ...x, company: text };
+				if (item === 'title') return { ...x, title: text };
+				if (item === 'dateFrom') return { ...x, dateFrom: text };
+				if (item === 'dateTo') return { ...x, dateTo: text };
 			})
 		);
 	};
@@ -85,7 +89,7 @@ export const DataProvider = ({ children }) => {
 		setDescArray(
 			descArray.map((x) => {
 				if (x.id !== itemId) return x;
-				return { ...x, text: '' };
+				return { ...x, text: text };
 			})
 		);
 	};

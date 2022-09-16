@@ -127,3 +127,22 @@ textarea:focus {
     font-size: 24px;
     width: 100%;
 }
+.skill {
+    font-size: 24px;
+    width: 100%;
+}
+.exp {
+    font-style: italic !important;
+    font-size: 24px;
+    width: 100%;
+}
+.title {
+    margin-left: 20px;
+    margin-top: 1px !important;
+    font-size: 35px;
+}
+.company {
+    margin-left: 40px;
+    margin-top: 1px !important;
+    font-size: 20px;
+}

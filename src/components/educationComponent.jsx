@@ -9,7 +9,7 @@ function Education(props) {
 	const { eduArray, handleEduDelete } = useContext(DataContext);
 	const id = props.education.id;
 	const [school, setSchool] = useState(props.education.school);
-	const [program, setProgram] = useState(props.education.study);
+	const [program, setProgram] = useState(props.education.program);
 	const [major, setMajor] = useState(props.education.major);
 	const [dateFrom, setDateFrom] = useState(props.education.dateFrom);
 	const [dateTo, setDateTo] = useState(props.education.dateTo);
