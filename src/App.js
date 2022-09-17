@@ -8,8 +8,8 @@ function App() {
         <DataProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Main />} />
-                    <Route path="/preview" element={<ResumeBuilder />} />
+                    <Route path="/top-cv-project-hooks/" element={<Main />} />
+                    <Route path="/top-cv-project-hooks/preview" element={<ResumeBuilder />} />
                 </Routes>
             </BrowserRouter>
         </DataProvider>
