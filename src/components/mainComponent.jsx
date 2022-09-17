@@ -36,7 +36,7 @@ export default function Main() {
 										<h1>Rob The Resume Builder</h1>
 									</Col>
 									<Col md={2}>
-										<Link to="/preview">
+										<Link to="/top-cv-project-hooks/preview">
 											<Button className="bg-primary">Preview</Button>
 										</Link>
 										<Outlet />

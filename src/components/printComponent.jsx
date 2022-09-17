@@ -32,7 +32,7 @@ const ResumeBuilder = (props) => {
 							<CardHeader className="text-center h1 fc text-light bg-dark">
 								<Row>
 									<Col md={2}>
-										<Link to="/">
+										<Link to="/top-cv-project-hooks">
 											<Button className="bg-primary">Go Back</Button>
 										</Link>
 										<Outlet />
