@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Row, Card, CardHeader, CardBody, Label, Input, Col, Button } from 'reactstrap';
-import { AiFillEye } from 'react-icons/ai';
-import { FaTrashAlt, FaPenAlt } from 'react-icons/fa';
+import React from 'react';
+import { Label } from 'reactstrap';
+import { FaTrashAlt } from 'react-icons/fa';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
@@ -31,7 +30,7 @@ export default function WorkDesc({ id }) {
 			<div className="col-md-10 pb-3">
 				<ul className="row">
 					{descArray.map((item, i) => {
-						if (item.parentId === id) {
+						if (item.parentId == id) {
 							return (
 								<div key={item.id} className="row">
 									<div className="col-md-1 pb-3">

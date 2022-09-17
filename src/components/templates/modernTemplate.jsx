@@ -53,19 +53,19 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 				</div>
 
 				<div>
-					<div className="education" style={{ borderColor: color }}>
+					<div className="education2" style={{ borderColor: color }}>
 						<span>Education</span>
 					</div>
-					<div className="educ">
+					<div className="educ2">
 						{eduArray.map((item, idx) => (
 							<div key={item.id}>
-								<div className={'study'} style={{ fontSize: edu1 + 'px' }}>
+								<div className={'study2'} style={{ fontSize: edu1 + 'px' }}>
 									{item.study}
 								</div>
-								<div className={'major'} style={{ fontSize: edu2 + 'px' }}>
+								<div className={'major2'} style={{ fontSize: edu2 + 'px' }}>
 									{item.major}
 								</div>
-								<div className={'school'} style={{ fontSize: edu3 + 'px' }}>
+								<div className={'school2'} style={{ fontSize: edu3 + 'px' }}>
 									{item.school}
 								</div>
 								<div className="scYear" style={{ fontSize: edu4 + 'px' }}>
@@ -76,7 +76,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					</div>
 				</div>
 				<div>
-					<div className="education" style={{ borderColor: color }}>
+					<div className="education2" style={{ borderColor: color }}>
 						<span>Certifications</span>
 					</div>
 					<div className="educ">
@@ -164,10 +164,10 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 							<div>
 								<ul>
 									{descArray.map((item2, i) => {
-										if (item2.parentId == item.id) {
+										if (item2.parentId === item.id) {
 											return (
 												<div key={item2.id} className="wii" style={{ fontSize: work3 + 'px' }}>
-													<li>{item2.item}</li>
+													<li>{item2.text}</li>
 												</div>
 											);
 										}
@@ -178,7 +178,6 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 					))}
 				</div>
 			</div>
-			<button onClick={() => console.log(contact)}>console contact</button>
 		</div>
 	);
 });

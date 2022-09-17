@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Row, Card, CardHeader, CardBody, Label, Input, Col, Button } from 'reactstrap';
-import { AiFillEye } from 'react-icons/ai';
-import { FaTrashAlt, FaPenAlt } from 'react-icons/fa';
-import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { Row, Card, CardHeader, CardBody, Col } from 'reactstrap';
+import { FaTrashAlt } from 'react-icons/fa';
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
 import { WorkInput } from './utils/workInput';
@@ -36,7 +34,7 @@ function WorkHistory(props) {
                     <WorkInput name={company} setter={setCompnay} id={id} type="company" mdSize={10} />
                     <WorkInput name={dateFrom} setter={setDateFrom} id={id} type="dateFrom" mdSize={4} />
                     <WorkInput name={dateTo} setter={setDateTo} id={id} type="dateTo" mdSize={4} />
-                    <WorkDesc />
+                    <WorkDesc id={props.work.id} />
                 </Row>
             </CardBody>
         </Card>

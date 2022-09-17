@@ -6,7 +6,7 @@ import DataContext from '../context/DataContext';
 import { EduInput } from './utils/eduInput';
 
 function Education(props) {
-	const { eduArray, handleEduDelete } = useContext(DataContext);
+	const { handleEduDelete } = useContext(DataContext);
 	const id = props.education.id;
 	const [school, setSchool] = useState(props.education.school);
 	const [study, setStudy] = useState(props.education.study);
@@ -36,7 +36,6 @@ function Education(props) {
 					<EduInput name={dateTo} setter={setDateTo} id={id} type="dateTo" mdSize={3} />
 				</Row>
 			</CardBody>
-			<button onClick={() => console.log(eduArray)}>eduarray</button>
 		</Card>
 	);
 }
