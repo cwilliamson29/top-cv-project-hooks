@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 
-export function PrintNav({ val, def, setter, name, mdSize }) {
+export function NavSlider({ val, def, setter, name, mdSize }) {
 	//setter(def);
 	const minVal = def - 10;
 	const maxVal = def + 10;
