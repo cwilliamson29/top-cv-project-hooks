@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
-import { Container, Card, CardHeader, Row, CardBody, Col, Button, Input, Label, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
+import { Container, Card, CardHeader, Row, CardBody, Col, Button, Input, Label, Nav, TabContent, TabPane, Form } from 'reactstrap';
 import ReactToPrint from 'react-to-print';
-import classnames from 'classnames';
 import { ModernTemplate } from './templates/modernTemplate';
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
 import { Outlet, Link } from 'react-router-dom';
+import NavItemRender from './tabViews/navItemComponent';
+import { printNavData } from './tabViews/navData';
+import { PrintNav } from './tabViews/printNavPaneComponent';
+import uniqid from 'uniqid';
 
 const ResumeBuilder = (props) => {
 	const { contact, summary } = useContext(DataContext);
 	const componentRef = React.useRef(null);
 	const [activeTab, setActiveTab] = useState('1');
-	const [abr, setAbr] = useState('100');
-	const [name, setName] = useState('50');
-	const [sumSize, setSumSize] = useState('13');
-	const [loc, setLoc] = useState('15');
-	const [phone, setPhone] = useState('15');
-	const [email, setEmail] = useState('15');
+
+	const [abr, setAbr] = useState(100);
+	const [name, setName] = useState(50);
+	const [sumSize, setSumSize] = useState(13);
+	const [loc, setLoc] = useState(15);
+	const [phone, setPhone] = useState(15);
+	const [email, setEmail] = useState(15);
+
 	const [color, setColor] = useState('hsl(225, 100%, 55%)');
 	const [edu1, setEdu1] = useState('14');
+
 	const [edu2, setEdu2] = useState('13');
 	const [edu3, setEdu3] = useState('14');
 	const [cert1, setCert1] = useState('16');
@@ -69,137 +75,44 @@ const ResumeBuilder = (props) => {
 						<CardBody>
 							<div className=" pb-1">
 								<Nav tabs>
-									<NavItem className="fc">
-										<NavLink
-											className={classnames({ active: activeTab === '1' })}
-											onClick={() => {
-												toggle('1');
-											}}>
-											Personal Information
-										</NavLink>
-									</NavItem>
-									<NavItem className="fc">
-										<NavLink
-											className={classnames({ active: activeTab === '2' })}
-											onClick={() => {
-												toggle('2');
-											}}>
-											Education
-										</NavLink>
-									</NavItem>
-									<NavItem className="fc">
-										<NavLink
-											className={classnames({ active: activeTab === '3' })}
-											onClick={() => {
-												toggle('3');
-											}}>
-											Certifications
-										</NavLink>
-									</NavItem>
-									<NavItem className="fc">
-										<NavLink
-											className={classnames({ active: activeTab === '4' })}
-											onClick={() => {
-												toggle('4');
-											}}>
-											Skills
-										</NavLink>
-									</NavItem>
-									<NavItem className="fc">
-										<NavLink
-											className={classnames({ active: activeTab === '5' })}
-											onClick={() => {
-												toggle('5');
-											}}>
-											Work History
-										</NavLink>
-									</NavItem>
+									{printNavData.map((item, i) => (
+										<NavItemRender key={uniqid()} num={item.num} name={item.name} activeTab={activeTab} toggle={toggle} />
+									))}
 								</Nav>
 
 								<TabContent activeTab={activeTab}>
 									<TabPane tabId="1">
 										<div className="row h5 fw-bold pt-1">
-											<div className="col-md-12" style={{ paddingLeft: '50px' }}>
+											<div className="col-md-7" style={{ paddingLeft: '50px' }}>
 												<p>Adjust your font size below</p>
 											</div>
-										</div>
-										<div className="row">
-											<div className="col-md-4">
-												<div className="row pb-1 bg-clight">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Name Initials:</Label>
-													</div>
-													<div className="col-4">
-														<Input type="text" onChange={(e) => setAbr(e.target.value)} value={abr} />
-													</div>
-												</div>
-
-												<div className="row pb-1">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Full Name:</Label>
-													</div>
-													<div className="col-4">
-														<Input type="text" onChange={(e) => setName(e.target.value)} value={name} />
-													</div>
-												</div>
-
-												<div className="row pb-1 bg-clight">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Summary:</Label>
-													</div>
-													<div className="col-4">
-														<Input type="text" onChange={(e) => setSumSize(e.target.value)} value={sumSize} />
-													</div>
-												</div>
-											</div>
-											<div className="col-md-4">
-												<div className="row pb-1 bg-clight">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Location:</Label>
-													</div>
-													<div className="col-4">
-														<Input type="text" onChange={(e) => setLoc(e.target.value)} value={loc} />
-													</div>
-												</div>
-												<div className="row pb-1">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Phone:</Label>
-													</div>
-													<div className="col-4">
-														<Input type="text" onChange={(e) => setPhone(e.target.value)} value={phone} />
-													</div>
-												</div>
-												<div className="row pb-1 bg-clight">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Email:</Label>
-													</div>
-													<div className="col-4">
-														<Input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
-													</div>
-												</div>
-											</div>
-											<div className="col-md-4">
-												<div className="row pb-1 bg-clight">
+											<div className="col-md-5 flex-end">
+												<div className="row pb-1 flex-end">
 													<div className="col-5 text-end">
 														<Label className="text-primary fw-bold">Color:</Label>
 													</div>
 													<div className="col-4">
-														<Input type="select" name="select" onChange={(e) => setColor(e.target.value)} defaultValue={color}>
+														<select name="color" className="selColors" onChange={(e) => setColor(e.target.value)} defaultValue={color}>
 															{colorOptions.map((option, idx) => (
 																<option key={idx} value={option.value}>
 																	{option.label}
 																</option>
 															))}
-														</Input>
-													</div>
-												</div>
-												<div className="row pb-1">
-													<div className="col-5 text-end">
-														<Label className="text-primary fw-bold">Phone:</Label>
+														</select>
 													</div>
 												</div>
 											</div>
 										</div>
+										<Row className="bg-clight pt-1 pb-1">
+											<PrintNav val={abr} def={100} setter={setAbr} name="Name Initials Size" mdSize={4} />
+											<PrintNav val={name} def={50} setter={setName} name="Name Header Size" mdSize={4} />
+											<PrintNav val={sumSize} def={13} setter={setSumSize} name="Summary Size" mdSize={4} />
+										</Row>
+										<Row className="bg-light pt-1 pb-1">
+											<PrintNav val={loc} def={15} setter={setLoc} name="Location Size" mdSize={4} />
+											<PrintNav val={phone} def={15} setter={setPhone} name="Phone Size" mdSize={4} />
+											<PrintNav val={email} def={15} setter={setEmail} name="Email Size" mdSize={4} />
+										</Row>
 									</TabPane>
 									<TabPane tabId="2">
 										<div className="row h5 fw-bold pt-1">

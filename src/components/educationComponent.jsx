@@ -9,7 +9,7 @@ function Education(props) {
 	const { eduArray, handleEduDelete } = useContext(DataContext);
 	const id = props.education.id;
 	const [school, setSchool] = useState(props.education.school);
-	const [program, setProgram] = useState(props.education.program);
+	const [study, setStudy] = useState(props.education.study);
 	const [major, setMajor] = useState(props.education.major);
 	const [dateFrom, setDateFrom] = useState(props.education.dateFrom);
 	const [dateTo, setDateTo] = useState(props.education.dateTo);
@@ -29,7 +29,7 @@ function Education(props) {
 			</CardHeader>
 			<CardBody>
 				<Row className="pr-5 pl-2">
-					<EduInput name={program} setter={setProgram} id={id} type="study" mdSize={10} />
+					<EduInput name={study} setter={setStudy} id={id} type="study" mdSize={10} />
 					<EduInput name={major} setter={setMajor} id={id} type="major" mdSize={10} />
 					<EduInput name={school} setter={setSchool} id={id} type="school" mdSize={10} />
 					<EduInput name={dateFrom} setter={setDateFrom} id={id} type="dateFrom" mdSize={4} />

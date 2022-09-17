@@ -71,8 +71,14 @@ textarea:focus {
     outline: 5px auto Highlight; /* Firefox */
     outline: 5px auto -webkit-focus-ring-color; /* Chrome, Safari */
 }
-.program {
-    font-size: 45px !important;
+.selColors {
+    resize: none !important;
+    overflow: hidden !important;
+    width: 100%;
+    border: 2px dotted #d3d3d3 !important;
+}
+.study {
+    font-size: 3em !important;
     font-style: italic !important;
     width: auto !important;
     float: left;
@@ -80,13 +86,13 @@ textarea:focus {
 .school {
     margin-left: 5px;
     margin-top: 10px !important;
-    font-size: 25px;
+    font-size: 1.65em;
     width: auto !important;
 }
 .major {
     margin-left: 20px;
     margin-top: 1px !important;
-    font-size: 35px;
+    font-size: 2em;
 }
 .dateTo {
     font-style: italic !important;
@@ -145,4 +151,19 @@ textarea:focus {
     margin-left: 40px;
     margin-top: 1px !important;
     font-size: 20px;
+}
+.slideCont {
+    width: 75% !important;
+}
+.inputCont {
+    width: 25% !important;
+}
+.printInputBox {
+    border: 1px dotted black !important;
+    padding: 5px !important;
+    width: 39px;
+}
+.printSlide {
+    margin-top: 8px !important;
+    padding: 5px !important;
 }
