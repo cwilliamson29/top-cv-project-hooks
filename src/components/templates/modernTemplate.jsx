@@ -109,7 +109,7 @@ export const ModernTemplate = React.forwardRef((props, ref) => {
 
 				<div>
 					<div className="summary" style={{ borderColor: color }}>
-						Summmary
+						Summary
 					</div>
 				</div>
 				<div className="summaryDesc" style={{ fontSize: sumSize + 'px' }}>
