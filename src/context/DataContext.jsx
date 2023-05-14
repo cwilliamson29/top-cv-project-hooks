@@ -114,6 +114,40 @@ export const DataProvider = ({ children }) => {
 		setSkillsArray(skillsArray.filter((item) => item.id !== id));
 	};
 
+	const loadSample = () => {
+		setContact({ fname: 'Lucy', lname: 'Morningstar', email: 'lucy6@bigbadwood.com', phone: '(321) 654-9875', loc: 'Los Angeles, CA' });
+		setSummary(
+			'Innovative tech mind with 15 years of experience working as a computer programmer. Capable of working with a variety of technology and software solutions, and managing databases. Valuable team member who has experience diagnosing problems and developing solutions. Extensive expertise in networking systems and working with mainframe computers. Talented leader with unique ideas and a history of successful contributions in the field.'
+		);
+		setEduArray([...eduArray, { id: uniqid(), school: 'Univeristy of Georgia', study: 'Bachelors of Science', major: 'Computer Science', dateFrom: 'Fall 2012', dateTo: 'Spring 2018' }]);
+		setCertArray([...certArray, { id: uniqid(), cert: 'Full Stack Web Developer', source: 'Coursera', date: 'October 2020' }]);
+		setWorkArray([...workArray, { id: 1234, company: 'Amazon', title: 'Jr Software Engineer', dateFrom: 'October 2020', dateTo: 'November 2021' }]);
+		setWorkArray([...workArray, { id: 5678, company: 'Google', title: 'Jr Software Engineer', dateFrom: 'November 2021', dateTo: 'Present' }]);
+		setDescArray([...descArray, { id: uniqid(), parentId: 1234, text: 'Worked on the sinister web data of gigantic proportions' }]);
+		setDescArray([...descArray, { id: uniqid(), parentId: 1234, text: 'Helped steal the souls of hundreds of American small businesses' }]);
+		setDescArray([...descArray, { id: uniqid(), parentId: 1234, text: 'Developed sinister algorithms to target deep desires' }]);
+		setDescArray([...descArray, { id: uniqid(), parentId: 5678, text: "Worked on Google's worlds population control algorithms" }]);
+		setDescArray([...descArray, { id: uniqid(), parentId: 5678, text: 'Helped develope the algorithm for predicting sinister treads' }]);
+		setDescArray([...descArray, { id: uniqid(), parentId: 5678, text: 'Helped develope the algorithm for snuffing out small businesses on google analytics' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'React', exp: '2 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Java', exp: '4 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'NodeJS', exp: '2 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Express', exp: '2 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'MongoDB', exp: '2 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'MySQL', exp: '7 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'HTML/CSS', exp: '7 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Javascript', exp: '7 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Ruby', exp: '5 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Database Design', exp: '7 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Soul Stealing', exp: 'Infinite Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Linux', exp: '10 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Mac OS', exp: '10 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Windows', exp: '20 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'VS Code', exp: '7 Years' }]);
+		setSkillsArray([...skillsArray, { id: uniqid(), skill: 'Sublime Text', exp: '7 Years' }]);
+		console.log(descArray);
+	};
+	
 	return (
 		<DataContext.Provider
 			value={{
